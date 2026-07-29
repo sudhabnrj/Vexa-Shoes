@@ -1,0 +1,6 @@
+{
+  "name": "IKA4 Footwear",
+  "description": "IKA4 - High-performance premium sneaker and footwear storefront",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
