@@ -196,19 +196,19 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
   };
 
   // GPU Hardware-accelerated perspective slot parameters
-  // Slot 4: Active / Foreground Right (Tallest, Full Color)
-  // Slot 3, 2, 1, 0: Receding diagonal depth line to the left
+  // Slot 4: Active / Foreground Right (Anchored to right edge, no blank gap)
+  // Slot 3, 2, 1, 0: Evenly distributed across stage width from left (2%) to right (77%)
   const slotConfig = [
     // Slot 0 (Deepest Left)
-    { x: '4%', height: '230px', width: '130px', scale: 0.68, opacity: 0.28, zIndex: 1 },
+    { x: '2%', height: '220px', width: '120px', scale: 0.70, opacity: 0.45, zIndex: 1 },
     // Slot 1 (Far Left)
-    { x: '17%', height: '280px', width: '150px', scale: 0.78, opacity: 0.50, zIndex: 2 },
+    { x: '20%', height: '270px', width: '140px', scale: 0.78, opacity: 0.65, zIndex: 2 },
     // Slot 2 (Center Left)
-    { x: '31%', height: '340px', width: '180px', scale: 0.86, opacity: 0.72, zIndex: 3 },
+    { x: '39%', height: '330px', width: '165px', scale: 0.86, opacity: 0.80, zIndex: 3 },
     // Slot 3 (Mid Right)
-    { x: '46%', height: '410px', width: '210px', scale: 0.94, opacity: 0.90, zIndex: 4 },
+    { x: '58%', height: '400px', width: '190px', scale: 0.94, opacity: 0.92, zIndex: 4 },
     // Slot 4 (ACTIVE FOREGROUND RIGHT - TALLEST & Sharpest)
-    { x: '64%', height: '495px', width: '260px', scale: 1.0, opacity: 1.0, zIndex: 10 },
+    { x: '77%', height: '490px', width: '225px', scale: 1.0, opacity: 1.0, zIndex: 10 },
   ];
 
   const getSlotForIndex = (idx: number) => {
