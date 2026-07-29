@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Heart, ArrowRight, ChevronLeft, ChevronRight, ShoppingBag, Plus, Check } from 'lucide-react';
-import { Product, PRODUCTS_GRID_1, PRODUCTS_CATEGORY_SECTION } from '../data/products';
+import { Heart, Plus, ArrowRight, ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { Product, PRODUCTS_GRID_1 } from '../data/products';
 import { ASSETS } from '../data/assets';
 
 export interface RunwayLook {
@@ -13,31 +13,31 @@ export interface RunwayLook {
   products: Product[];
 }
 
-// 5 Curated Runway Looks matching the video aesthetic
+// 5 Curated Runway Looks matching the exact video & screenshot reference
 const RUNWAY_LOOKS: RunwayLook[] = [
   {
     id: 'look-1',
-    lookNumber: '05',
-    title: 'ROSE GOLD METALLIC',
-    subtitle: 'High-shine sequin trousers paired with classic tweed cropped jacket & Vexa high-tops.',
-    modelImage: ASSETS.modelWhiteSuit,
+    lookNumber: '5',
+    title: 'SPRING SUMMER 2026',
+    subtitle: 'Picture-perfect and fashionably on the dot. High-shine micro-sequin trousers paired with classic tweed cropped jacket and IKA4 Vexa accents.',
+    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop', // Pink / Gold fashion outfit
     products: [
       {
         id: 'rl-1',
-        name: 'CROPPED FEATURED TWEED JACKET',
+        name: 'CROPPED FEATHERED TWEED JACKET',
         category: 'Formal',
-        price: 2800,
+        price: 2900,
         rating: 5,
         sizes: 'XS - XL',
         image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=800&auto=format&fit=crop',
         colorway: 'Rose Blush / Tweed',
-        description: 'Structured wool tweed cropped jacket with handcrafted pearl buttons.'
+        description: 'Structured wool tweed cropped jacket with handcrafted feather cuffs.'
       },
       {
         id: 'rl-2',
         name: 'MICRO SEQUIN DRESS PANTS',
         category: 'Formal',
-        price: 1950,
+        price: 895,
         rating: 5,
         sizes: 'XS - XL',
         image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800&auto=format&fit=crop',
@@ -48,16 +48,16 @@ const RUNWAY_LOOKS: RunwayLook[] = [
   },
   {
     id: 'look-2',
-    lookNumber: '06',
+    lookNumber: '6',
     title: 'OVERSIZED TRENCH & SLINGBACK',
-    subtitle: 'Classic double-breasted cotton trench coat paired with kitten heel slingbacks.',
+    subtitle: 'Classic double-breasted cotton trench coat paired with kitten heel slingbacks and IKA4 Vexa stride geometry.',
     modelImage: ASSETS.modelMaleStreetwear,
     products: [
       {
         id: 'rl-3',
         name: 'KITTEN HEEL SLINGBACK PUMP',
         category: 'Sneakers',
-        price: 980,
+        price: 780,
         rating: 5,
         sizes: 'US 6 - 11',
         image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop',
@@ -68,7 +68,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         id: 'rl-4',
         name: 'OVERSIZED COTTON TRENCH COAT',
         category: 'Lifestyle',
-        price: 2450,
+        price: 1950,
         rating: 5,
         sizes: 'S - XXL',
         image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop',
@@ -79,27 +79,27 @@ const RUNWAY_LOOKS: RunwayLook[] = [
   },
   {
     id: 'look-3',
-    lookNumber: '07',
-    title: 'ICE BLUE SILK & SLINGBACKS',
-    subtitle: 'Asymmetric ruffled silk tunic paired with fitted metallic heels & IKA4 Vexa accents.',
+    lookNumber: '7',
+    title: 'ICE BLUE SILK TUNIC',
+    subtitle: 'Asymmetric ruffled silk tunic paired with fitted metallic heels and minimalist silver accessories.',
     modelImage: ASSETS.modelFemaleOlive,
     products: [
       {
         id: 'rl-5',
-        name: 'FITTED RIBBED SILK TUNIC',
+        name: 'FORMAL MINT SILK SWEATER',
         category: 'Lifestyle',
-        price: 1650,
+        price: 795,
         rating: 5,
         sizes: 'XS - L',
         image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
         colorway: 'Sky Mint',
-        description: 'Form-fitting draped silk tunic with statement bow tie back.'
+        description: 'Form-fitting draped silk tunic with statement bow tie waist.'
       },
       {
         id: 'rl-6',
-        name: 'SILVER MIRROR SLINGBACK PUMP',
+        name: 'FITTED SILVER MIRROR PUMP',
         category: 'Formal',
-        price: 1120,
+        price: 850,
         rating: 5,
         sizes: 'US 5 - 10',
         image: 'https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?q=80&w=800&auto=format&fit=crop',
@@ -110,16 +110,16 @@ const RUNWAY_LOOKS: RunwayLook[] = [
   },
   {
     id: 'look-4',
-    lookNumber: '09',
+    lookNumber: '9',
     title: 'COUTURE BLACK BUSTIER',
-    subtitle: 'Voluminous ruffle bustier top paired with belted denim trousers.',
+    subtitle: 'Voluminous ruffle bustier top paired with belted denim trousers and IKA4 Vexa classic soles.',
     modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop',
     products: [
       {
         id: 'rl-7',
-        name: 'RUFFLED BUSTIER TOP',
+        name: 'RUFFLES BUSTIER TOP',
         category: 'Lifestyle',
-        price: 1450,
+        price: 950,
         rating: 5,
         sizes: 'XS - L',
         image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=800&auto=format&fit=crop',
@@ -130,7 +130,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         id: 'rl-8',
         name: 'BELTED VEGAN TROUSER',
         category: 'Formal',
-        price: 995,
+        price: 895,
         rating: 5,
         sizes: 'XS - XL',
         image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?q=80&w=800&auto=format&fit=crop',
@@ -144,7 +144,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
     lookNumber: '12',
     title: 'IKA4 VEXA KINETIC SUIT',
     subtitle: 'Ultralight performance blazer paired with Vexa 360° nitrogen foam sneakers.',
-    modelImage: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
+    modelImage: ASSETS.modelWhiteSuit,
     products: [
       {
         id: 'rl-9',
@@ -187,233 +187,219 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
 
   const activeLook = RUNWAY_LOOKS[activeIndex];
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % RUNWAY_LOOKS.length);
+  // Triangle perspective slots calculation
+  // Slot 4: Active / Foreground Right (Tallest, Full Color)
+  // Slot 3: Center Right
+  // Slot 2: Center Left
+  // Slot 1: Far Left
+  // Slot 0: Background Deep Left (Smallest, Faded)
+  const getSlotForIndex = (idx: number) => {
+    const total = RUNWAY_LOOKS.length;
+    // Calculate distance from activeIndex in cyclic order
+    const diff = (idx - activeIndex + total) % total;
+    // Map diff 0 -> slot 4 (active foreground right)
+    // diff 1 -> slot 0, diff 2 -> slot 1, diff 3 -> slot 2, diff 4 -> slot 3
+    const slotMap = [4, 0, 1, 2, 3];
+    return slotMap[diff];
   };
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + RUNWAY_LOOKS.length) % RUNWAY_LOOKS.length);
-  };
+  // Positions for the 5 triangle perspective slots (from left background to right foreground)
+  const slotStyles = [
+    // Slot 0 (Deepest Background Left)
+    { left: '4%', height: '220px', width: '130px', scale: 0.65, opacity: 0.25, zIndex: 1, filter: 'blur(2px) grayscale(40%)' },
+    // Slot 1 (Far Left)
+    { left: '16%', height: '270px', width: '150px', scale: 0.75, opacity: 0.45, zIndex: 2, filter: 'blur(1px) grayscale(20%)' },
+    // Slot 2 (Center Left)
+    { left: '29%', height: '330px', width: '180px', scale: 0.85, opacity: 0.70, zIndex: 3, filter: 'none' },
+    // Slot 3 (Mid Right)
+    { left: '44%', height: '400px', width: '210px', scale: 0.94, opacity: 0.90, zIndex: 4, filter: 'none' },
+    // Slot 4 (ACTIVE FOREGROUND RIGHT - TALLEST & LARGEST)
+    { left: '63%', height: '490px', width: '260px', scale: 1.0, opacity: 1.0, zIndex: 10, filter: 'none' },
+  ];
 
   return (
-    <section className="py-16 md:py-24 bg-neutral-50 text-neutral-900 overflow-hidden border-t border-neutral-200/80 select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#e9eff4] text-neutral-900 overflow-hidden select-none border-t border-b border-neutral-300/60 font-sans">
+      
+      {/* TOP LUXURY NAVBAR (MARC JACOBS STYLE) */}
+      <div className="bg-white border-b border-neutral-200/80 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] text-neutral-400 uppercase">
+            <span className="text-neutral-900 font-extrabold border-b-2 border-neutral-900 pb-0.5">RUNWAY</span>
+            <span className="hover:text-neutral-900 cursor-pointer">THE IKA4 COLLECTION</span>
+            <span className="hover:text-neutral-900 cursor-pointer">BOOKMARC</span>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-8 text-[10px] font-bold tracking-[0.18em] text-neutral-400 uppercase">
+            <span className="hover:text-neutral-900 cursor-pointer">COLLECTIONS</span>
+            <span className="hover:text-neutral-900 cursor-pointer">CLOTHING</span>
+            <span className="hover:text-neutral-900 cursor-pointer">LOOKBOOK</span>
+            <span className="hover:text-neutral-900 cursor-pointer">BEAUTY</span>
+            <span className="hover:text-neutral-900 cursor-pointer">ACCESSORIES</span>
+            <span className="hover:text-neutral-900 cursor-pointer">BE IKA4</span>
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT STAGE CONTAINER */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 min-h-[620px]">
         
-        {/* TOP BRAND & CATEGORY NAVBAR */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-300 pb-6 mb-10 gap-4">
-          <div>
-            <div className="flex items-center gap-6 mb-3 text-xs font-bold uppercase tracking-widest text-neutral-500">
-              <span className="text-neutral-900 border-b-2 border-neutral-950 pb-1">COLLECTIONS</span>
-              <span className="hover:text-neutral-900 cursor-pointer">CLOTHING</span>
-              <span className="hover:text-neutral-900 cursor-pointer">LOOKBOOK</span>
-              <span className="hover:text-neutral-900 cursor-pointer">BEAUTY</span>
-              <span className="hover:text-neutral-900 cursor-pointer">ACCESSORIES</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 font-sans">
-              SPRING SUMMER 2026
+        {/* LEFT 8 COLS: TITLE + TRIANGLE PERSPECTIVE STAGE + LOOK FOOTER */}
+        <div className="lg:col-span-8 p-6 md:p-10 flex flex-col justify-between relative">
+          
+          {/* Top Left Title & Paragraph */}
+          <div className="max-w-xs sm:max-w-sm z-20">
+            <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-[0.15em] text-neutral-900">
+              {activeLook.title}
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-neutral-600 max-w-xl leading-relaxed">
-              Futuristic streetwear silhouettes paired with high-performance IKA4 Vexa footwear. Explore curated runway looks and shop individual pieces directly from the runway.
+            <p className="mt-3 text-xs text-neutral-600 leading-relaxed font-normal">
+              {activeLook.subtitle}
             </p>
           </div>
 
-          {/* Carousel Navigation Arrows */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handlePrev}
-              className="w-10 h-10 rounded-full border border-neutral-300 bg-white hover:bg-neutral-900 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95"
-              aria-label="Previous Look"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <span className="text-xs font-bold font-mono text-neutral-500">
-              {String(activeIndex + 1).padStart(2, '0')} / {String(RUNWAY_LOOKS.length).padStart(2, '0')}
-            </span>
-            <button
-              onClick={handleNext}
-              className="w-10 h-10 rounded-full border border-neutral-300 bg-white hover:bg-neutral-900 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95"
-              aria-label="Next Look"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+          {/* CENTER TRIANGLE PERSPECTIVE MODEL LINEUP */}
+          <div className="relative w-full h-[460px] md:h-[500px] flex items-end my-4">
+            {RUNWAY_LOOKS.map((look, idx) => {
+              const slot = getSlotForIndex(idx);
+              const style = slotStyles[slot];
+              const isActive = slot === 4;
+
+              return (
+                <motion.div
+                  key={look.id}
+                  onClick={() => setActiveIndex(idx)}
+                  initial={false}
+                  animate={{
+                    left: style.left,
+                    height: style.height,
+                    width: style.width,
+                    scale: style.scale,
+                    opacity: style.opacity,
+                    zIndex: style.zIndex,
+                    filter: style.filter,
+                  }}
+                  transition={{
+                    duration: 0.55,
+                    ease: [0.16, 1, 0.3, 1], // Smooth cubic-bezier transition
+                  }}
+                  className={`absolute bottom-0 cursor-pointer flex flex-col items-center justify-end origin-bottom transition-all ${
+                    isActive ? 'drop-shadow-2xl' : 'hover:opacity-80'
+                  }`}
+                >
+                  <img
+                    src={look.modelImage}
+                    alt={look.title}
+                    className="w-full h-full object-cover object-top rounded-t-lg"
+                  />
+                </motion.div>
+              );
+            })}
           </div>
+
+          {/* Bottom Left Look Details & Shop CTA */}
+          <div className="z-20 pt-4 flex items-end justify-between border-t border-neutral-300/40">
+            <div>
+              <div className="text-xl sm:text-2xl font-bold uppercase tracking-wider text-neutral-950 font-sans">
+                LOOK | <span className="font-extrabold">{activeLook.lookNumber}</span>
+              </div>
+              <button
+                onClick={() => onSelectProduct(activeLook.products[0])}
+                className="group mt-2 inline-flex items-center gap-2 bg-white/80 hover:bg-white border border-neutral-300 text-neutral-900 text-[10px] font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm transition-all hover:scale-105"
+              >
+                <span>SHOP THE LOOK</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* Look Selector Dots */}
+            <div className="flex items-center gap-2">
+              {RUNWAY_LOOKS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === activeIndex ? 'w-6 bg-neutral-950' : 'w-1.5 bg-neutral-400 hover:bg-neutral-600'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
         </div>
 
-        {/* MAIN STAGE GRID: LEFT MODEL RUNWAY CAROUSEL + RIGHT PRODUCT COLUMN */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* RIGHT 4 COLS: CLEAN WHITE PRODUCT CARDS PANEL (EXACT SCREENSHOT LAYOUT) */}
+        <div className="lg:col-span-4 bg-white border-l border-neutral-200/80 p-6 md:p-8 flex flex-col justify-between">
           
-          {/* LEFT 8 COLS: INTERACTIVE RUNWAY MODEL STAGE */}
-          <div className="lg:col-span-8 relative flex flex-col justify-between min-h-[520px] md:min-h-[580px]">
-            
-            {/* Horizontal Lineup of Models */}
-            <div className="relative w-full h-[450px] md:h-[500px] flex items-center justify-center overflow-hidden">
-              <div className="flex items-center justify-center gap-4 sm:gap-8 transition-all duration-500">
-                {RUNWAY_LOOKS.map((look, idx) => {
-                  const isActive = idx === activeIndex;
-                  const isPrev = idx === (activeIndex - 1 + RUNWAY_LOOKS.length) % RUNWAY_LOOKS.length;
-                  const isNext = idx === (activeIndex + 1) % RUNWAY_LOOKS.length;
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeLook.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              className="space-y-8 flex-1 flex flex-col justify-around"
+            >
+              {activeLook.products.map((prod) => {
+                const isWishlisted = wishlistIds.includes(prod.id);
 
-                  // Only render active, previous, and next for a focused carousel experience
-                  if (!isActive && !isPrev && !isNext) return null;
+                return (
+                  <div key={prod.id} className="relative flex flex-col justify-between group">
+                    
+                    {/* Top Left Heart Wishlist Toggle */}
+                    <div className="flex justify-between items-center mb-2">
+                      <button
+                        onClick={() => onToggleWishlist(prod)}
+                        className="text-neutral-400 hover:text-neutral-900 transition-colors p-1"
+                        title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                      >
+                        <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-neutral-900 text-neutral-900' : ''}`} />
+                      </button>
+                    </div>
 
-                  return (
-                    <motion.div
-                      key={look.id}
-                      onClick={() => setActiveIndex(idx)}
-                      initial={false}
-                      animate={{
-                        scale: isActive ? 1.05 : 0.84,
-                        opacity: isActive ? 1 : 0.45,
-                        zIndex: isActive ? 20 : 10,
-                        x: isActive ? 0 : isPrev ? -30 : 30,
-                        filter: isActive ? 'brightness(100%)' : 'brightness(80%) grayscale(30%)',
-                      }}
-                      transition={{ duration: 0.45, ease: 'easeOut' }}
-                      className={`relative flex-shrink-0 cursor-pointer rounded-2xl overflow-hidden shadow-xl transition-all ${
-                        isActive
-                          ? 'w-64 sm:w-80 md:w-96 h-[440px] md:h-[490px] ring-2 ring-neutral-900/10'
-                          : 'w-48 sm:w-56 md:w-64 h-[360px] md:h-[400px] hover:opacity-70'
-                      }`}
+                    {/* Product Image Thumbnail */}
+                    <div
+                      onClick={() => onSelectProduct(prod)}
+                      className="w-full h-44 sm:h-52 flex items-center justify-center p-2 cursor-pointer"
                     >
                       <img
-                        src={look.modelImage}
-                        alt={look.title}
-                        className="w-full h-full object-cover object-top"
+                        src={prod.image}
+                        alt={prod.name}
+                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent opacity-80" />
-                      
-                      {/* Active Indicator Badge */}
-                      {isActive && (
-                        <div className="absolute top-4 left-4 bg-neutral-950/80 backdrop-blur-md text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full border border-white/20">
-                          ACTIVE RUNWAY LOOK
-                        </div>
-                      )}
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
+                    </div>
 
-            {/* Bottom Left Look Details & Shop CTA */}
-            <div className="pt-6 border-t border-neutral-200 flex items-center justify-between">
-              <div>
-                <div className="text-2xl sm:text-3xl font-black uppercase text-neutral-950 tracking-tight">
-                  LOOK | <span className="text-orange-600">{activeLook.lookNumber}</span>
-                </div>
-                <button
-                  onClick={() => onSelectProduct(activeLook.products[0])}
-                  className="group mt-1 flex items-center gap-2 text-xs sm:text-sm font-extrabold tracking-wider text-neutral-900 hover:text-orange-600 uppercase transition-colors"
-                >
-                  <span>SHOP THE LOOK</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              {/* Step indicator dots */}
-              <div className="flex items-center gap-2">
-                {RUNWAY_LOOKS.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveIndex(i)}
-                    className={`h-2 rounded-full transition-all ${
-                      i === activeIndex ? 'w-8 bg-neutral-950' : 'w-2 bg-neutral-300 hover:bg-neutral-400'
-                    }`}
-                    aria-label={`Go to look ${i + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* RIGHT 4 COLS: STACKED PRODUCT CARDS FOR CURRENT LOOK */}
-          <div className="lg:col-span-4 flex flex-col space-y-6">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
-              <span className="text-xs font-black uppercase tracking-widest text-neutral-500">
-                FEATURED ITEMS IN LOOK {activeLook.lookNumber}
-              </span>
-              <span className="text-xs font-bold text-neutral-400 font-mono">
-                {activeLook.products.length} ITEMS
-              </span>
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeLook.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="space-y-4"
-              >
-                {activeLook.products.map((prod) => {
-                  const isWishlisted = wishlistIds.includes(prod.id);
-
-                  return (
-                    <div
-                      key={prod.id}
-                      className="group bg-white p-4 rounded-2xl border border-neutral-200/90 shadow-sm hover:shadow-md transition-all flex gap-4 items-center relative"
-                    >
-                      {/* Product Thumbnail */}
-                      <div
-                        onClick={() => onSelectProduct(prod)}
-                        className="w-24 h-28 sm:w-28 sm:h-32 bg-neutral-100 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer p-2 flex items-center justify-center relative"
-                      >
-                        <img
-                          src={prod.image}
-                          alt={prod.name}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-
-                      {/* Product Details */}
-                      <div className="flex-1 min-w-0">
-                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-neutral-400">
-                          {prod.category}
-                        </span>
+                    {/* Bottom Details & Add Plus Icon */}
+                    <div className="mt-4 flex items-end justify-between pt-3 border-t border-neutral-100">
+                      <div>
                         <h4
                           onClick={() => onSelectProduct(prod)}
-                          className="text-sm sm:text-base font-extrabold text-neutral-950 truncate hover:text-orange-600 transition-colors cursor-pointer mt-0.5"
+                          className="text-[11px] font-bold uppercase tracking-wider text-neutral-900 hover:underline cursor-pointer"
                         >
                           {prod.name}
                         </h4>
-                        <p className="text-xs text-neutral-500 font-mono mt-1">
+                        <p className="text-[11px] font-medium text-neutral-400 mt-0.5 font-mono">
                           ${prod.price.toLocaleString()}
                         </p>
-
-                        <div className="mt-3 flex items-center gap-2">
-                          <button
-                            onClick={() => onSelectProduct(prod)}
-                            className="bg-neutral-950 hover:bg-neutral-800 text-white text-xs font-bold px-3 py-1.5 rounded-full transition-all hover:scale-105 active:scale-95"
-                          >
-                            View Item
-                          </button>
-                        </div>
                       </div>
 
-                      {/* Wishlist Button */}
                       <button
-                        onClick={() => onToggleWishlist(prod)}
-                        className={`absolute top-3 right-3 p-2 rounded-full border transition-all ${
-                          isWishlisted
-                            ? 'bg-red-50 border-red-200 text-red-600'
-                            : 'bg-white border-neutral-200 text-neutral-400 hover:text-neutral-900 hover:border-neutral-400'
-                        }`}
-                        title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                        onClick={() => onSelectProduct(prod)}
+                        className="p-1.5 text-neutral-400 hover:text-neutral-950 transition-colors"
+                        title="View item details"
                       >
-                        <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-red-600' : ''}`} />
+                        <Plus className="w-4 h-4" />
                       </button>
                     </div>
-                  );
-                })}
-              </motion.div>
-            </AnimatePresence>
 
-          </div>
+                  </div>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
 
         </div>
 
       </div>
+
     </section>
   );
 };
