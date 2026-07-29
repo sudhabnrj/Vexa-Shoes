@@ -5,6 +5,7 @@ import { DefineSection } from './components/DefineSection';
 import { BrandBar } from './components/BrandBar';
 import { ProductGridSection } from './components/ProductGridSection';
 import { ElevateSection } from './components/ElevateSection';
+import { RunwayLookbookCarousel } from './components/RunwayLookbookCarousel';
 import { CategoryCatalogSection } from './components/CategoryCatalogSection';
 import { PromoBanner } from './components/PromoBanner';
 import { LookbookSection } from './components/LookbookSection';
@@ -131,6 +132,13 @@ export default function App() {
         {/* Elevate Your Stride Dual Feature Section */}
         <ElevateSection
           onExplore={() => setSelectedProduct(PRODUCTS_GRID_1[0])}
+        />
+
+        {/* Runway Lookbook Interactive Carousel (from video reference) */}
+        <RunwayLookbookCarousel
+          onSelectProduct={(prod) => setSelectedProduct(prod)}
+          onToggleWishlist={(prod) => handleToggleWishlist(prod)}
+          wishlistIds={wishlistProducts.map((p) => p.id)}
         />
 
         {/* Category Filters & Catalog Section */}

@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'Running' | 'Basketball' | 'Sneakers' | 'Gym' | 'Hiking' | 'Formal';
+  category: 'Running' | 'Basketball' | 'Sneakers' | 'Gym' | 'Hiking' | 'Formal' | 'Lifestyle';
   price: number;
   rating: number;
   sizes: string;
