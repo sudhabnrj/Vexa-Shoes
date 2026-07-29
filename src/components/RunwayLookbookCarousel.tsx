@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Heart, Plus, ArrowRight, ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { Heart, Plus, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Product, PRODUCTS_GRID_1 } from '../data/products';
 import { ASSETS } from '../data/assets';
 
@@ -13,14 +13,14 @@ export interface RunwayLook {
   products: Product[];
 }
 
-// 5 Curated Runway Looks matching the exact video & screenshot reference
+// 5 Curated Runway Looks matching the exact video reference
 const RUNWAY_LOOKS: RunwayLook[] = [
   {
     id: 'look-1',
     lookNumber: '5',
     title: 'SPRING SUMMER 2026',
     subtitle: 'Picture-perfect and fashionably on the dot. High-shine micro-sequin trousers paired with classic tweed cropped jacket and IKA4 Vexa accents.',
-    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop', // Pink / Gold fashion outfit
+    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
     products: [
       {
         id: 'rl-1',
@@ -187,40 +187,41 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
 
   const activeLook = RUNWAY_LOOKS[activeIndex];
 
-  // Triangle perspective slots calculation
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % RUNWAY_LOOKS.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + RUNWAY_LOOKS.length) % RUNWAY_LOOKS.length);
+  };
+
+  // GPU Hardware-accelerated perspective slot parameters
   // Slot 4: Active / Foreground Right (Tallest, Full Color)
-  // Slot 3: Center Right
-  // Slot 2: Center Left
-  // Slot 1: Far Left
-  // Slot 0: Background Deep Left (Smallest, Faded)
+  // Slot 3, 2, 1, 0: Receding diagonal depth line to the left
+  const slotConfig = [
+    // Slot 0 (Deepest Left)
+    { x: '4%', height: '230px', width: '130px', scale: 0.68, opacity: 0.28, zIndex: 1 },
+    // Slot 1 (Far Left)
+    { x: '17%', height: '280px', width: '150px', scale: 0.78, opacity: 0.50, zIndex: 2 },
+    // Slot 2 (Center Left)
+    { x: '31%', height: '340px', width: '180px', scale: 0.86, opacity: 0.72, zIndex: 3 },
+    // Slot 3 (Mid Right)
+    { x: '46%', height: '410px', width: '210px', scale: 0.94, opacity: 0.90, zIndex: 4 },
+    // Slot 4 (ACTIVE FOREGROUND RIGHT - TALLEST & Sharpest)
+    { x: '64%', height: '495px', width: '260px', scale: 1.0, opacity: 1.0, zIndex: 10 },
+  ];
+
   const getSlotForIndex = (idx: number) => {
     const total = RUNWAY_LOOKS.length;
-    // Calculate distance from activeIndex in cyclic order
     const diff = (idx - activeIndex + total) % total;
-    // Map diff 0 -> slot 4 (active foreground right)
-    // diff 1 -> slot 0, diff 2 -> slot 1, diff 3 -> slot 2, diff 4 -> slot 3
     const slotMap = [4, 0, 1, 2, 3];
     return slotMap[diff];
   };
 
-  // Positions for the 5 triangle perspective slots (from left background to right foreground)
-  const slotStyles = [
-    // Slot 0 (Deepest Background Left)
-    { left: '4%', height: '220px', width: '130px', scale: 0.65, opacity: 0.25, zIndex: 1, filter: 'blur(2px) grayscale(40%)' },
-    // Slot 1 (Far Left)
-    { left: '16%', height: '270px', width: '150px', scale: 0.75, opacity: 0.45, zIndex: 2, filter: 'blur(1px) grayscale(20%)' },
-    // Slot 2 (Center Left)
-    { left: '29%', height: '330px', width: '180px', scale: 0.85, opacity: 0.70, zIndex: 3, filter: 'none' },
-    // Slot 3 (Mid Right)
-    { left: '44%', height: '400px', width: '210px', scale: 0.94, opacity: 0.90, zIndex: 4, filter: 'none' },
-    // Slot 4 (ACTIVE FOREGROUND RIGHT - TALLEST & LARGEST)
-    { left: '63%', height: '490px', width: '260px', scale: 1.0, opacity: 1.0, zIndex: 10, filter: 'none' },
-  ];
-
   return (
     <section className="bg-[#e9eff4] text-neutral-900 overflow-hidden select-none border-t border-b border-neutral-300/60 font-sans">
       
-      {/* TOP LUXURY NAVBAR (MARC JACOBS STYLE) */}
+      {/* TOP LUXURY NAVBAR */}
       <div className="bg-white border-b border-neutral-200/80 px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] text-neutral-400 uppercase">
@@ -246,21 +247,31 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
         {/* LEFT 8 COLS: TITLE + TRIANGLE PERSPECTIVE STAGE + LOOK FOOTER */}
         <div className="lg:col-span-8 p-6 md:p-10 flex flex-col justify-between relative">
           
-          {/* Top Left Title & Paragraph */}
+          {/* Top Left Title & Subtitle */}
           <div className="max-w-xs sm:max-w-sm z-20">
-            <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-[0.15em] text-neutral-900">
-              {activeLook.title}
-            </h2>
-            <p className="mt-3 text-xs text-neutral-600 leading-relaxed font-normal">
-              {activeLook.subtitle}
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeLook.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-[0.15em] text-neutral-900">
+                  {activeLook.title}
+                </h2>
+                <p className="mt-3 text-xs text-neutral-600 leading-relaxed font-normal">
+                  {activeLook.subtitle}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* CENTER TRIANGLE PERSPECTIVE MODEL LINEUP */}
-          <div className="relative w-full h-[460px] md:h-[500px] flex items-end my-4">
+          {/* CENTER TRIANGLE PERSPECTIVE MODEL LINEUP (SILKY SMOOTH GPU TRANSFORM) */}
+          <div className="relative w-full h-[460px] md:h-[500px] flex items-end my-4 overflow-hidden">
             {RUNWAY_LOOKS.map((look, idx) => {
               const slot = getSlotForIndex(idx);
-              const style = slotStyles[slot];
+              const cfg = slotConfig[slot];
               const isActive = slot === 4;
 
               return (
@@ -269,30 +280,53 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
                   onClick={() => setActiveIndex(idx)}
                   initial={false}
                   animate={{
-                    left: style.left,
-                    height: style.height,
-                    width: style.width,
-                    scale: style.scale,
-                    opacity: style.opacity,
-                    zIndex: style.zIndex,
-                    filter: style.filter,
+                    x: cfg.x,
+                    height: cfg.height,
+                    width: cfg.width,
+                    scale: cfg.scale,
+                    opacity: cfg.opacity,
+                    zIndex: cfg.zIndex,
                   }}
                   transition={{
-                    duration: 0.55,
-                    ease: [0.16, 1, 0.3, 1], // Smooth cubic-bezier transition
+                    type: 'spring',
+                    stiffness: 240,
+                    damping: 26,
+                    mass: 0.8,
                   }}
-                  className={`absolute bottom-0 cursor-pointer flex flex-col items-center justify-end origin-bottom transition-all ${
-                    isActive ? 'drop-shadow-2xl' : 'hover:opacity-80'
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    willChange: 'transform, opacity',
+                  }}
+                  className={`cursor-pointer flex flex-col items-center justify-end origin-bottom transition-opacity ${
+                    isActive ? 'drop-shadow-2xl' : 'hover:opacity-85'
                   }`}
                 >
                   <img
                     src={look.modelImage}
                     alt={look.title}
-                    className="w-full h-full object-cover object-top rounded-t-lg"
+                    className="w-full h-full object-cover object-top rounded-t-lg pointer-events-none"
                   />
                 </motion.div>
               );
             })}
+
+            {/* Stage Left/Right Quick Click Nav Overlay */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white/70 backdrop-blur-md hover:bg-white text-neutral-800 flex items-center justify-center shadow-md active:scale-95 transition-all"
+              aria-label="Previous Look"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={handleNext}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white/70 backdrop-blur-md hover:bg-white text-neutral-800 flex items-center justify-center shadow-md active:scale-95 transition-all"
+              aria-label="Next Look"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Bottom Left Look Details & Shop CTA */}
@@ -303,7 +337,7 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
               </div>
               <button
                 onClick={() => onSelectProduct(activeLook.products[0])}
-                className="group mt-2 inline-flex items-center gap-2 bg-white/80 hover:bg-white border border-neutral-300 text-neutral-900 text-[10px] font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm transition-all hover:scale-105"
+                className="group mt-2 inline-flex items-center gap-2 bg-white/90 hover:bg-white border border-neutral-300 text-neutral-900 text-[10px] font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm transition-all hover:scale-105"
               >
                 <span>SHOP THE LOOK</span>
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -316,9 +350,10 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
                 <button
                   key={i}
                   onClick={() => setActiveIndex(i)}
-                  className={`h-1.5 rounded-full transition-all ${
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
                     i === activeIndex ? 'w-6 bg-neutral-950' : 'w-1.5 bg-neutral-400 hover:bg-neutral-600'
                   }`}
+                  aria-label={`Go to look ${i + 1}`}
                 />
               ))}
             </div>
@@ -326,7 +361,7 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
 
         </div>
 
-        {/* RIGHT 4 COLS: CLEAN WHITE PRODUCT CARDS PANEL (EXACT SCREENSHOT LAYOUT) */}
+        {/* RIGHT 4 COLS: SILKY SMOOTH CROSS-FADE PRODUCT PANEL */}
         <div className="lg:col-span-4 bg-white border-l border-neutral-200/80 p-6 md:p-8 flex flex-col justify-between">
           
           <AnimatePresence mode="wait">
@@ -335,7 +370,7 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="space-y-8 flex-1 flex flex-col justify-around"
             >
               {activeLook.products.map((prod) => {
