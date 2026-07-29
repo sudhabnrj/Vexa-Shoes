@@ -1,99 +1,175 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Heart, Plus, ArrowRight, ChevronLeft, ChevronRight, ShoppingBag, Check, Zap, Shield, Sparkles } from 'lucide-react';
-import { Product } from '../data/products';
+import { Heart, Plus, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Product, PRODUCTS_GRID_1 } from '../data/products';
+import { ASSETS } from '../data/assets';
 
-// Import all product images directly from assets/product
-import vexaKnitPair from '../../assets/product/ChatGPT Image Jul 29, 2026, 08_21_22 PM.png';
-import vexaStealthBlack from '../../assets/product/ChatGPT Image Jul 29, 2026, 07_39_03 PM.png';
-import vexaSilverBlack from '../../assets/product/ChatGPT Image Jul 29, 2026, 07_53_12 PM.png';
-import magentaCourt from '../../assets/product/pngegg (5).png';
-import crimsonZoom from '../../assets/product/pngegg (6).png';
-import airMaxRed from '../../assets/product/pngegg (7).png';
-
-export interface ProductShowcaseItem {
+export interface RunwayLook {
   id: string;
-  name: string;
-  category: 'Running' | 'Sneakers' | 'Formal' | 'Lifestyle';
-  price: number;
-  colorway: string;
-  tagline: string;
-  description: string;
-  image: string;
-  specs: {
-    weight: string;
-    cushioning: string;
-    drop: string;
-  };
+  lookNumber: string;
+  title: string;
+  subtitle: string;
+  modelImage: string;
+  products: Product[];
 }
 
-const SHOWCASE_PRODUCTS: ProductShowcaseItem[] = [
+// 5 Curated Runway Looks matching the exact video reference
+const RUNWAY_LOOKS: RunwayLook[] = [
   {
-    id: 'prod-1',
-    name: 'IKA4 VEXA AERO-KNIT SLIP-ON',
-    category: 'Sneakers',
-    price: 280,
-    colorway: 'Heathered Ash / Rose Gold Accent',
-    tagline: 'Lightweight slip-on construction with high-recoil nitrogen foam sole.',
-    description: 'Engineered 3D aero-knit upper with zoned dynamic tension band and metallic copper heel clips for responsive everyday performance.',
-    image: vexaKnitPair,
-    specs: { weight: '185G', cushioning: 'NITRO-FOAM 3.0', drop: '8MM' },
+    id: 'look-1',
+    lookNumber: '5',
+    title: 'SPRING SUMMER 2026',
+    subtitle: 'Picture-perfect and fashionably on the dot. High-shine micro-sequin trousers paired with classic tweed cropped jacket and IKA4 Vexa accents.',
+    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
+    products: [
+      {
+        id: 'rl-1',
+        name: 'CROPPED FEATHERED TWEED JACKET',
+        category: 'Formal',
+        price: 2900,
+        rating: 5,
+        sizes: 'XS - XL',
+        image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Rose Blush / Tweed',
+        description: 'Structured wool tweed cropped jacket with handcrafted feather cuffs.'
+      },
+      {
+        id: 'rl-2',
+        name: 'MICRO SEQUIN DRESS PANTS',
+        category: 'Formal',
+        price: 895,
+        rating: 5,
+        sizes: 'XS - XL',
+        image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Metallic Rose Gold',
+        description: 'Fluid micro-sequin tailored trousers with silk lining.'
+      }
+    ]
   },
   {
-    id: 'prod-2',
-    name: 'IKA4 VEXA STEALTH BLACK',
-    category: 'Running',
-    price: 320,
-    colorway: 'Stealth Matte Black / White Sole',
-    tagline: 'Tactical dark silhouette engineered for high-velocity lateral support.',
-    description: 'Full-grain synthetic leather overlays over micro-mesh upper with high-density strike plate for supreme velocity and traction.',
-    image: vexaStealthBlack,
-    specs: { weight: '210G', cushioning: 'CARBON-RECOIL', drop: '10MM' },
+    id: 'look-2',
+    lookNumber: '6',
+    title: 'OVERSIZED TRENCH & SLINGBACK',
+    subtitle: 'Classic double-breasted cotton trench coat paired with kitten heel slingbacks and IKA4 Vexa stride geometry.',
+    modelImage: ASSETS.modelMaleStreetwear,
+    products: [
+      {
+        id: 'rl-3',
+        name: 'KITTEN HEEL SLINGBACK PUMP',
+        category: 'Sneakers',
+        price: 780,
+        rating: 5,
+        sizes: 'US 6 - 11',
+        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Patent Ivory',
+        description: 'Sleek pointed slingback heel with contrast bow accent.'
+      },
+      {
+        id: 'rl-4',
+        name: 'OVERSIZED COTTON TRENCH COAT',
+        category: 'Lifestyle',
+        price: 1950,
+        rating: 5,
+        sizes: 'S - XXL',
+        image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Camel Sand',
+        description: 'Water-resistant double-breasted cotton gabardine trench coat.'
+      }
+    ]
   },
   {
-    id: 'prod-3',
-    name: 'IKA4 VEXA CHROME DUAL',
-    category: 'Lifestyle',
-    price: 295,
-    colorway: 'Dual Slate Gray / Onyx',
-    tagline: 'Minimalist dual-tone design crafted with breathable synthetic mesh.',
-    description: 'Contrast panelling with speed lacing architecture and flexible sculpted midsole for effortless all-day comfort.',
-    image: vexaSilverBlack,
-    specs: { weight: '195G', cushioning: 'AIR-MATRIX', drop: '8MM' },
+    id: 'look-3',
+    lookNumber: '7',
+    title: 'ICE BLUE SILK TUNIC',
+    subtitle: 'Asymmetric ruffled silk tunic paired with fitted metallic heels and minimalist silver accessories.',
+    modelImage: ASSETS.modelFemaleOlive,
+    products: [
+      {
+        id: 'rl-5',
+        name: 'FORMAL MINT SILK SWEATER',
+        category: 'Lifestyle',
+        price: 795,
+        rating: 5,
+        sizes: 'XS - L',
+        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Sky Mint',
+        description: 'Form-fitting draped silk tunic with statement bow tie waist.'
+      },
+      {
+        id: 'rl-6',
+        name: 'FITTED SILVER MIRROR PUMP',
+        category: 'Formal',
+        price: 850,
+        rating: 5,
+        sizes: 'US 5 - 10',
+        image: 'https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Chrome Silver',
+        description: 'High-shine mirrored leather pump with subtle red sole detailing.'
+      }
+    ]
   },
   {
-    id: 'prod-4',
-    name: 'IKA4 VEXA COURT MAGENTA',
-    category: 'Sneakers',
-    price: 240,
-    colorway: 'Berry Magenta / Pure White',
-    tagline: 'Vibrant court silhouette with reinforced sole tread geometry.',
-    description: 'Padded ankle collar with high-friction herringbone outsole designed for explosive quick cuts and lateral grip.',
-    image: magentaCourt,
-    specs: { weight: '225G', cushioning: 'EVA IMPACT', drop: '6MM' },
+    id: 'look-4',
+    lookNumber: '9',
+    title: 'COUTURE BLACK BUSTIER',
+    subtitle: 'Voluminous ruffle bustier top paired with belted denim trousers and IKA4 Vexa classic soles.',
+    modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop',
+    products: [
+      {
+        id: 'rl-7',
+        name: 'RUFFLES BUSTIER TOP',
+        category: 'Lifestyle',
+        price: 950,
+        rating: 5,
+        sizes: 'XS - L',
+        image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Jet Black',
+        description: 'Sculptural architectural shoulder ruffles with boned internal bustier.'
+      },
+      {
+        id: 'rl-8',
+        name: 'BELTED VEGAN TROUSER',
+        category: 'Formal',
+        price: 895,
+        rating: 5,
+        sizes: 'XS - XL',
+        image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Chalk White',
+        description: 'High-waisted wide leg vegan leather trousers with cinched waist belt.'
+      }
+    ]
   },
   {
-    id: 'prod-5',
-    name: 'IKA4 VEXA CRIMSON ZOOM',
-    category: 'Running',
-    price: 310,
-    colorway: 'Crimson Red / Midnight Navy',
-    tagline: 'Marathon distance road runner with dual-density foam core.',
-    description: 'Gradient engineered mesh upper with responsive zoom airbag unit for effortless toe-off propulsion.',
-    image: crimsonZoom,
-    specs: { weight: '190G', cushioning: 'ZOOM AIR-PODS', drop: '9MM' },
-  },
-  {
-    id: 'prod-6',
-    name: 'IKA4 VEXA AIR MAX TAVAS',
-    category: 'Lifestyle',
-    price: 260,
-    colorway: 'Ember Red / Stealth Charcoal',
-    tagline: 'Iconic visible air cushion unit with micro-perforated heel counter.',
-    description: 'Seamless synthetic construction with visible heel airbag for maximum shock absorption on hard surfaces.',
-    image: airMaxRed,
-    specs: { weight: '205G', cushioning: 'MAX-AIR UNIT', drop: '10MM' },
-  },
+    id: 'look-5',
+    lookNumber: '12',
+    title: 'IKA4 VEXA KINETIC SUIT',
+    subtitle: 'Ultralight performance blazer paired with Vexa 360° nitrogen foam sneakers.',
+    modelImage: ASSETS.modelWhiteSuit,
+    products: [
+      {
+        id: 'rl-9',
+        name: 'IKA4 VEXA NITRO RUNNER',
+        category: 'Running',
+        price: 320,
+        rating: 5,
+        sizes: 'US 7 - 13',
+        image: PRODUCTS_GRID_1[1].image,
+        colorway: 'White / Neon Amber',
+        description: 'Nitrogen-infused foam midsole with carbon strike plate for maximum energy return.'
+      },
+      {
+        id: 'rl-10',
+        name: 'AERO-WEAVE KINETIC BLAZER',
+        category: 'Lifestyle',
+        price: 1850,
+        rating: 5,
+        sizes: 'S - XL',
+        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Charcoal Matte',
+        description: 'Breathable 4-way stretch tailored blazer engineered for unrestricted motion.'
+      }
+    ]
+  }
 ];
 
 interface RunwayLookbookCarouselProps {
@@ -108,211 +184,257 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
   wishlistIds,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeProduct = SHOWCASE_PRODUCTS[activeIndex];
+
+  const activeLook = RUNWAY_LOOKS[activeIndex];
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % SHOWCASE_PRODUCTS.length);
+    setActiveIndex((prev) => (prev + 1) % RUNWAY_LOOKS.length);
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + SHOWCASE_PRODUCTS.length) % SHOWCASE_PRODUCTS.length);
+    setActiveIndex((prev) => (prev - 1 + RUNWAY_LOOKS.length) % RUNWAY_LOOKS.length);
   };
 
-  const isWishlisted = wishlistIds.includes(activeProduct.id);
+  // GPU Hardware-accelerated perspective slot parameters
+  // Slot 4: Active / Foreground Right (Anchored to right edge, no blank gap)
+  // Slot 3, 2, 1, 0: Evenly distributed across stage width from left (2%) to right (77%)
+  const slotConfig = [
+    // Slot 0 (Deepest Left)
+    { x: '2%', height: '220px', width: '120px', scale: 0.70, opacity: 0.45, zIndex: 1 },
+    // Slot 1 (Far Left)
+    { x: '20%', height: '270px', width: '140px', scale: 0.78, opacity: 0.65, zIndex: 2 },
+    // Slot 2 (Center Left)
+    { x: '39%', height: '330px', width: '165px', scale: 0.86, opacity: 0.80, zIndex: 3 },
+    // Slot 3 (Mid Right)
+    { x: '58%', height: '400px', width: '190px', scale: 0.94, opacity: 0.92, zIndex: 4 },
+    // Slot 4 (ACTIVE FOREGROUND RIGHT - TALLEST & Sharpest)
+    { x: '77%', height: '490px', width: '225px', scale: 1.0, opacity: 1.0, zIndex: 10 },
+  ];
 
-  // Convert ShowcaseItem to standard Product interface for callbacks
-  const currentProductData: Product = {
-    id: activeProduct.id,
-    name: activeProduct.name,
-    category: activeProduct.category,
-    price: activeProduct.price,
-    rating: 5,
-    sizes: 'US 7 - 12',
-    image: activeProduct.image,
-    colorway: activeProduct.colorway,
-    description: activeProduct.description,
+  const getSlotForIndex = (idx: number) => {
+    const total = RUNWAY_LOOKS.length;
+    const diff = (idx - activeIndex + total) % total;
+    const slotMap = [4, 0, 1, 2, 3];
+    return slotMap[diff];
   };
 
   return (
-    <section className="py-16 md:py-24 bg-neutral-900 text-white select-none overflow-hidden border-t border-b border-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* TOP BRAND HEADER & NAVIGATION */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-800 pb-6 mb-12 gap-4">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-widest mb-3">
-              <Zap className="w-3.5 h-3.5" /> OFFICIAL VEXA PRODUCT LINEUP
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white font-sans">
-              THE VEXA FOOTWEAR GALLERY
-            </h2>
-            <p className="mt-2 text-sm text-neutral-400 max-w-xl leading-relaxed font-normal">
-              Explore our complete high-performance footwear collection. Crafted with precision 3D aero-knit, nitrogen foam cushioning, and kinetic energy return.
-            </p>
+    <section className="bg-[#e9eff4] text-neutral-900 overflow-hidden select-none border-t border-b border-neutral-300/60 font-sans">
+      
+      {/* TOP LUXURY NAVBAR */}
+      <div className="bg-white border-b border-neutral-200/80 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] text-neutral-400 uppercase">
+            <span className="text-neutral-900 font-extrabold border-b-2 border-neutral-900 pb-0.5">RUNWAY</span>
+            <span className="hover:text-neutral-900 cursor-pointer">THE IKA4 COLLECTION</span>
+            <span className="hover:text-neutral-900 cursor-pointer">BOOKMARC</span>
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-8 text-[10px] font-bold tracking-[0.18em] text-neutral-400 uppercase">
+            <span className="hover:text-neutral-900 cursor-pointer">COLLECTIONS</span>
+            <span className="hover:text-neutral-900 cursor-pointer">CLOTHING</span>
+            <span className="hover:text-neutral-900 cursor-pointer">LOOKBOOK</span>
+            <span className="hover:text-neutral-900 cursor-pointer">BEAUTY</span>
+            <span className="hover:text-neutral-900 cursor-pointer">ACCESSORIES</span>
+            <span className="hover:text-neutral-900 cursor-pointer">BE IKA4</span>
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT STAGE CONTAINER */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 min-h-[620px]">
+        
+        {/* LEFT 8 COLS: TITLE + TRIANGLE PERSPECTIVE STAGE + LOOK FOOTER */}
+        <div className="lg:col-span-8 p-6 md:p-10 flex flex-col justify-between relative">
+          
+          {/* Top Left Title & Subtitle */}
+          <div className="max-w-xs sm:max-w-sm z-20">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeLook.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-[0.15em] text-neutral-900">
+                  {activeLook.title}
+                </h2>
+                <p className="mt-3 text-xs text-neutral-600 leading-relaxed font-normal">
+                  {activeLook.subtitle}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* CENTER TRIANGLE PERSPECTIVE MODEL LINEUP (SILKY SMOOTH GPU TRANSFORM) */}
+          <div className="relative w-full h-[460px] md:h-[500px] flex items-end my-4 overflow-hidden">
+            {RUNWAY_LOOKS.map((look, idx) => {
+              const slot = getSlotForIndex(idx);
+              const cfg = slotConfig[slot];
+              const isActive = slot === 4;
+
+              return (
+                <motion.div
+                  key={look.id}
+                  onClick={() => setActiveIndex(idx)}
+                  initial={false}
+                  animate={{
+                    x: cfg.x,
+                    height: cfg.height,
+                    width: cfg.width,
+                    scale: cfg.scale,
+                    opacity: cfg.opacity,
+                    zIndex: cfg.zIndex,
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 240,
+                    damping: 26,
+                    mass: 0.8,
+                  }}
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    willChange: 'transform, opacity',
+                  }}
+                  className={`cursor-pointer flex flex-col items-center justify-end origin-bottom transition-opacity ${
+                    isActive ? 'drop-shadow-2xl' : 'hover:opacity-85'
+                  }`}
+                >
+                  <img
+                    src={look.modelImage}
+                    alt={look.title}
+                    className="w-full h-full object-cover object-top rounded-t-lg pointer-events-none"
+                  />
+                </motion.div>
+              );
+            })}
+
+            {/* Stage Left/Right Quick Click Nav Overlay */}
             <button
               onClick={handlePrev}
-              className="w-11 h-11 rounded-full border border-neutral-700 bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer"
-              aria-label="Previous Product"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white/70 backdrop-blur-md hover:bg-white text-neutral-800 flex items-center justify-center shadow-md active:scale-95 transition-all"
+              aria-label="Previous Look"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <span className="text-xs font-bold font-mono text-neutral-400">
-              {String(activeIndex + 1).padStart(2, '0')} / {String(SHOWCASE_PRODUCTS.length).padStart(2, '0')}
-            </span>
+
             <button
               onClick={handleNext}
-              className="w-11 h-11 rounded-full border border-neutral-700 bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer"
-              aria-label="Next Product"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white/70 backdrop-blur-md hover:bg-white text-neutral-800 flex items-center justify-center shadow-md active:scale-95 transition-all"
+              aria-label="Next Look"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
-        </div>
 
-        {/* MAIN STAGE GRID: LEFT PRODUCT HIGHLIGHT + RIGHT DETAILS PANEL */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          {/* LEFT 7 COLS: LARGE HERO PRODUCT SHOWCASE STAGE */}
-          <div className="lg:col-span-7 relative bg-neutral-950/80 border border-neutral-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between min-h-[460px] md:min-h-[520px] shadow-2xl overflow-hidden">
-            
-            {/* Ambient Background Radial Lighting */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent pointer-events-none blur-3xl" />
-            
-            <div className="flex items-center justify-between z-10">
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-orange-400">
-                MODEL // {String(activeIndex + 1).padStart(2, '0')}
-              </span>
-
+          {/* Bottom Left Look Details & Shop CTA */}
+          <div className="z-20 pt-4 flex items-end justify-between border-t border-neutral-300/40">
+            <div>
+              <div className="text-xl sm:text-2xl font-bold uppercase tracking-wider text-neutral-950 font-sans">
+                LOOK | <span className="font-extrabold">{activeLook.lookNumber}</span>
+              </div>
               <button
-                onClick={() => onToggleWishlist(currentProductData)}
-                className={`p-2.5 rounded-full border transition-all ${
-                  isWishlisted
-                    ? 'bg-red-500/20 border-red-500 text-red-500'
-                    : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:text-white'
-                }`}
-                title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                onClick={() => onSelectProduct(activeLook.products[0])}
+                className="group mt-2 inline-flex items-center gap-2 bg-white/90 hover:bg-white border border-neutral-300 text-neutral-900 text-[10px] font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm transition-all hover:scale-105"
               >
-                <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-red-500' : ''}`} />
+                <span>SHOP THE LOOK</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
-            {/* Main Animated Product Image */}
-            <div className="relative z-10 my-6 flex items-center justify-center h-[280px] sm:h-[340px]">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeProduct.id}
-                  initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, rotate: 5 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  src={activeProduct.image}
-                  alt={activeProduct.name}
-                  className="max-h-full max-w-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] cursor-pointer hover:scale-105 transition-transform duration-300"
-                  onClick={() => onSelectProduct(currentProductData)}
+            {/* Look Selector Dots */}
+            <div className="flex items-center gap-2">
+              {RUNWAY_LOOKS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === activeIndex ? 'w-6 bg-neutral-950' : 'w-1.5 bg-neutral-400 hover:bg-neutral-600'
+                  }`}
+                  aria-label={`Go to look ${i + 1}`}
                 />
-              </AnimatePresence>
+              ))}
             </div>
-
-            {/* Spec Pills Bar */}
-            <div className="z-10 grid grid-cols-3 gap-3 pt-4 border-t border-neutral-800/80 text-center font-mono text-xs">
-              <div className="bg-neutral-900/80 p-2.5 rounded-xl border border-neutral-800">
-                <span className="block text-[10px] text-neutral-500 font-bold uppercase">WEIGHT</span>
-                <span className="font-extrabold text-white">{activeProduct.specs.weight}</span>
-              </div>
-              <div className="bg-neutral-900/80 p-2.5 rounded-xl border border-neutral-800">
-                <span className="block text-[10px] text-neutral-500 font-bold uppercase">CUSHION</span>
-                <span className="font-extrabold text-orange-400">{activeProduct.specs.cushioning}</span>
-              </div>
-              <div className="bg-neutral-900/80 p-2.5 rounded-xl border border-neutral-800">
-                <span className="block text-[10px] text-neutral-500 font-bold uppercase">OFFSET</span>
-                <span className="font-extrabold text-white">{activeProduct.specs.drop}</span>
-              </div>
-            </div>
-
           </div>
 
-          {/* RIGHT 5 COLS: PRODUCT DETAILS & THUMBNAIL SELECTOR */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-            
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeProduct.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="space-y-4"
-              >
-                <div>
-                  <span className="text-xs font-extrabold uppercase tracking-widest text-orange-400">
-                    {activeProduct.category} SERIES
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-black uppercase text-white mt-1 leading-tight">
-                    {activeProduct.name}
-                  </h3>
-                  <div className="mt-2 text-2xl font-black font-mono text-white">
-                    ${activeProduct.price}
+        </div>
+
+        {/* RIGHT 4 COLS: SILKY SMOOTH CROSS-FADE PRODUCT PANEL */}
+        <div className="lg:col-span-4 bg-white border-l border-neutral-200/80 p-6 md:p-8 flex flex-col justify-between">
+          
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeLook.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-8 flex-1 flex flex-col justify-around"
+            >
+              {activeLook.products.map((prod) => {
+                const isWishlisted = wishlistIds.includes(prod.id);
+
+                return (
+                  <div key={prod.id} className="relative flex flex-col justify-between group">
+                    
+                    {/* Top Left Heart Wishlist Toggle */}
+                    <div className="flex justify-between items-center mb-2">
+                      <button
+                        onClick={() => onToggleWishlist(prod)}
+                        className="text-neutral-400 hover:text-neutral-900 transition-colors p-1"
+                        title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                      >
+                        <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-neutral-900 text-neutral-900' : ''}`} />
+                      </button>
+                    </div>
+
+                    {/* Product Image Thumbnail */}
+                    <div
+                      onClick={() => onSelectProduct(prod)}
+                      className="w-full h-44 sm:h-52 flex items-center justify-center p-2 cursor-pointer"
+                    >
+                      <img
+                        src={prod.image}
+                        alt={prod.name}
+                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+
+                    {/* Bottom Details & Add Plus Icon */}
+                    <div className="mt-4 flex items-end justify-between pt-3 border-t border-neutral-100">
+                      <div>
+                        <h4
+                          onClick={() => onSelectProduct(prod)}
+                          className="text-[11px] font-bold uppercase tracking-wider text-neutral-900 hover:underline cursor-pointer"
+                        >
+                          {prod.name}
+                        </h4>
+                        <p className="text-[11px] font-medium text-neutral-400 mt-0.5 font-mono">
+                          ${prod.price.toLocaleString()}
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={() => onSelectProduct(prod)}
+                        className="p-1.5 text-neutral-400 hover:text-neutral-950 transition-colors"
+                        title="View item details"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
+                    </div>
+
                   </div>
-                </div>
-
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
-                  {activeProduct.description}
-                </p>
-
-                <div className="p-3.5 rounded-2xl bg-neutral-850 border border-neutral-800 text-xs text-neutral-400">
-                  <span className="font-bold text-neutral-300 block mb-0.5">COLORWAY</span>
-                  {activeProduct.colorway}
-                </div>
-
-                <div className="pt-2 flex items-center gap-3">
-                  <button
-                    onClick={() => onSelectProduct(currentProductData)}
-                    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-neutral-950 px-6 py-3.5 rounded-full text-sm font-extrabold shadow-lg shadow-orange-500/20 transition-all hover:scale-105 cursor-pointer"
-                  >
-                    <span>VIEW PRODUCT DETAILS</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* THUMBNAIL SELECTOR GRID */}
-            <div className="pt-6 border-t border-neutral-800">
-              <span className="block text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3">
-                SELECT COLORWAY / MODEL
-              </span>
-              
-              <div className="grid grid-cols-6 gap-2">
-                {SHOWCASE_PRODUCTS.map((prod, i) => (
-                  <button
-                    key={prod.id}
-                    onClick={() => setActiveIndex(i)}
-                    className={`h-16 rounded-xl border p-1 overflow-hidden transition-all bg-neutral-950 flex items-center justify-center ${
-                      i === activeIndex
-                        ? 'border-orange-500 ring-2 ring-orange-500/40 scale-105'
-                        : 'border-neutral-800 opacity-60 hover:opacity-100 hover:border-neutral-600'
-                    }`}
-                    title={prod.name}
-                  >
-                    <img
-                      src={prod.image}
-                      alt={prod.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-          </div>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
 
         </div>
 
       </div>
+
     </section>
   );
 };
