@@ -64,13 +64,13 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Right Search & Action Icons */}
         <div className="flex items-center gap-3">
           
-          {/* Search Pill */}
+          {/* Expanded Search Pill */}
           <div 
             onClick={onOpenSearch}
-            className="hidden sm:flex items-center gap-2 bg-neutral-100 hover:bg-neutral-200/80 px-4 py-2 rounded-full cursor-pointer transition-colors text-neutral-500 text-sm w-44 lg:w-56"
+            className="hidden sm:flex items-center gap-2.5 bg-neutral-100 hover:bg-neutral-200/80 px-4 py-2.5 rounded-full cursor-pointer transition-all text-neutral-500 text-sm w-64 md:w-80 lg:w-96 border border-neutral-200/60 shadow-inner"
           >
-            <Search className="w-4 h-4 text-neutral-400" />
-            <span className="select-none">Q Search</span>
+            <Search className="w-4 h-4 text-neutral-400 shrink-0" />
+            <span className="select-none text-neutral-400 font-medium">Search shoes, apparel...</span>
           </div>
 
           <button
@@ -79,14 +79,6 @@ export const Header: React.FC<HeaderProps> = ({
             title="Search"
           >
             <Search className="w-5 h-5" />
-          </button>
-
-          {/* Sign in Button */}
-          <button
-            onClick={onOpenSignIn}
-            className="hidden sm:inline-flex items-center text-sm font-medium text-neutral-800 hover:text-neutral-950 px-3 py-1.5 rounded-full hover:bg-neutral-100 transition-colors"
-          >
-            Sign in
           </button>
 
           {/* Shopping Bag Icon with Badge */}
@@ -154,15 +146,6 @@ export const Header: React.FC<HeaderProps> = ({
                 {cat}
               </button>
             ))}
-            <button
-              onClick={() => {
-                onOpenSignIn();
-                setMobileMenuOpen(false);
-              }}
-              className="text-left px-4 py-2.5 rounded-xl font-medium text-base text-neutral-900 hover:bg-neutral-100"
-            >
-              Sign in / Register
-            </button>
           </div>
         </div>
       )}
