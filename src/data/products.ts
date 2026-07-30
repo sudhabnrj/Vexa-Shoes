@@ -167,7 +167,7 @@ export const PRODUCTS_CATEGORY_SECTION: Product[] = [
     price: 200,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p1,
     colorway: 'Clean Ivory',
     description: 'Minimalist luxury leather trainer designed for smart-casual wardrobes and executive comfort.'
   },
@@ -178,7 +178,7 @@ export const PRODUCTS_CATEGORY_SECTION: Product[] = [
     price: 220,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p2,
     colorway: 'Crimson Surge',
     description: 'Heavy lifter stability sneaker with flat heel surface and locked-down midfoot strap.'
   }
@@ -188,13 +188,13 @@ export const TOP_FEATURED_PRODUCTS = [
   {
     id: 'f1',
     name: 'AIR MAX TECH',
-    image: 'https://images.unsplash.com/photo-1514989940723-e8e51635b782?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1512990414788-d97cb4a25db3?q=80&w=1115&auto=format&fit=crop',
     colorway: 'Carbon Black / Ember'
   },
   {
     id: 'f2',
     name: 'PULSE RUNNER',
-    image: 'https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1574946943172-4800feadfab7?q=80&w=764&auto=format&fit=crop',
     colorway: 'Reflective Orange'
   }
 ];

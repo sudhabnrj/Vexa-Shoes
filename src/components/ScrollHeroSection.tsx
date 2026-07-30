@@ -265,13 +265,13 @@ export const ScrollHeroSection: React.FC<ScrollHeroSectionProps> = ({
           {/* Top Headline */}
           <div className="mt-16 md:mt-40  max-w-2xl mx-auto text-center pointer-events-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-widest mb-4">
-              <Zap className="w-3.5 h-3.5" /> Next-Gen Kinetic Footwear
+              <Zap className="w-3.5 h-3.5" /> NEXT-GEN PERFORMANCE FOOTWEAR
             </div>
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight uppercase text-white leading-none">
-              IKA4 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500">VEXA</span>
+              MOVE WITHOUT LIMITS <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500">VEXA</span>
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-neutral-400 max-w-md font-medium leading-relaxed">
-              Engineered with precision 3D aero-weave and dynamic propulsion geometry. Designed to define your stride.
+            <p className="mt-4 text-base sm:text-lg text-neutral-400 text-center font-medium leading-relaxed">
+              Engineered for speed, crafted for comfort, and designed to elevate every step. Experience premium performance with every stride.
             </p>
 
             <div className="mt-6 flex items-center justify-center gap-4">
@@ -279,7 +279,7 @@ export const ScrollHeroSection: React.FC<ScrollHeroSectionProps> = ({
                 onClick={onExplore}
                 className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-neutral-950 px-6 py-3 rounded-full text-sm font-extrabold shadow-lg shadow-orange-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
-                <span>EXPLORE MODEL</span>
+                <span>SHOP COLLECTION</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>

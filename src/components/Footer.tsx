@@ -1,4 +1,5 @@
 import React from 'react';
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { ASSETS } from '../data/assets';
 
 interface FooterProps {
@@ -9,20 +10,60 @@ export const Footer: React.FC<FooterProps> = ({ onSelectLink }) => {
   return (
     <footer className="w-full bg-[#0a0a0a] text-white py-12 lg:py-16">
       <div className="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12">
-        
+
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start relative z-10">
-          
-          {/* Column 1: Brand & Logo */}
+
+          {/* Column 1: Brand & Logo & Social Icons */}
           <div className="md:col-span-3 space-y-4">
-            <img
+            {/* <img
               src={ASSETS.logo}
               alt="IKA4 Footwear"
               className="h-10 sm:h-12 object-contain invert brightness-200"
-            />
+            /> */}
             <p className="text-xs text-neutral-400 font-medium leading-relaxed max-w-xs">
               Light on Feet. Heavy on Impact. Premium footwear designed for everyday performance and style.
             </p>
+
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 hover:border-white/50 text-neutral-400 hover:text-white flex items-center justify-center transition-all hover:scale-110 shadow-sm"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 hover:border-white/50 text-neutral-400 hover:text-white flex items-center justify-center transition-all hover:scale-110 shadow-sm"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 hover:border-white/50 text-neutral-400 hover:text-white flex items-center justify-center transition-all hover:scale-110 shadow-sm"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 hover:border-white/50 text-neutral-400 hover:text-white flex items-center justify-center transition-all hover:scale-110 shadow-sm"
+                aria-label="Youtube"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Column 2: IKA4 NAVIGATION */}

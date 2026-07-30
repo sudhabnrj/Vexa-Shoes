@@ -30,7 +30,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         price: 2900,
         rating: 5,
         sizes: 'XS - XL',
-        image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=800&auto=format&fit=crop',
+        image: ASSETS.p1,
         colorway: 'Rose Blush / Tweed',
         description: 'Structured wool tweed cropped jacket with handcrafted feather cuffs.'
       }
@@ -51,7 +51,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         price: 1950,
         rating: 5,
         sizes: 'S - XXL',
-        image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop',
+        image: ASSETS.p2,
         colorway: 'Camel Sand',
         description: 'Water-resistant double-breasted cotton gabardine trench coat.'
       }
@@ -72,7 +72,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         price: 795,
         rating: 5,
         sizes: 'XS - L',
-        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
+        image: ASSETS.p3,
         colorway: 'Sky Mint',
         description: 'Form-fitting draped silk tunic with statement bow tie waist.'
       }
@@ -93,7 +93,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         price: 895,
         rating: 5,
         sizes: 'XS - XL',
-        image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?q=80&w=800&auto=format&fit=crop',
+        image: ASSETS.p4,
         colorway: 'Chalk White',
         description: 'High-waisted wide leg vegan leather trousers with cinched waist belt.'
       }
@@ -114,7 +114,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         price: 1850,
         rating: 5,
         sizes: 'S - XL',
-        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop',
+        image: ASSETS.p5,
         colorway: 'Charcoal Matte',
         description: 'Breathable 4-way stretch tailored blazer engineered for unrestricted motion.'
       }
@@ -135,7 +135,7 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         price: 780,
         rating: 5,
         sizes: 'US 6 - 11',
-        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop',
+        image: ASSETS.p6,
         colorway: 'Patent Ivory',
         description: 'Sleek pointed slingback heel with contrast bow accent.'
       }
@@ -258,11 +258,10 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
                     transformOrigin: 'bottom center',
                     willChange: 'transform, opacity, left',
                   }}
-                  className={`cursor-pointer group flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 transition-all duration-300 ${
-                    isActive
-                      ? 'bg-gradient-to-b from-white/95 to-white/80 backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] border border-white/90 ring-1 ring-black/5'
-                      : 'bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md shadow-lg border border-white/50 hover:bg-white/80'
-                  }`}
+                  className={`cursor-pointer group flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 transition-all duration-300 ${isActive
+                    ? 'bg-gradient-to-b from-white/95 to-white/80 backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] border border-white/90 ring-1 ring-black/5'
+                    : 'bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md shadow-lg border border-white/50 hover:bg-white/80'
+                    }`}
                 >
                   <div className="relative w-full flex-1 flex items-center justify-center min-h-0">
                     <div className={`absolute bottom-1 w-4/5 h-3 rounded-full blur-md transition-opacity ${isActive ? 'bg-black/25 opacity-100' : 'bg-black/15 opacity-60'}`} />

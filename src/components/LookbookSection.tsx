@@ -15,7 +15,7 @@ export const LookbookSection: React.FC = () => {
   ].slice(0, 5);
 
   return (
-    <section className="py-12 bg-white relative">
+    <section className="pb-12 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
         {/* Section Top Heading */}
