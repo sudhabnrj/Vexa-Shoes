@@ -109,12 +109,12 @@ const RUNWAY_LOOKS: RunwayLook[] = [
       PRODUCTS_GRID_1[4],
       {
         id: 'rl-5b',
-        name: 'AERO-WEAVE KINETIC BLAZER',
+        name: 'AURA ECHO 01',
         category: 'Lifestyle',
         price: 1850,
         rating: 5,
         sizes: 'S - XL',
-        image: ASSETS.p5,
+        image: ASSETS.p51,
         colorway: 'Charcoal Matte',
         description: 'Breathable 4-way stretch tailored blazer engineered for unrestricted motion.'
       }

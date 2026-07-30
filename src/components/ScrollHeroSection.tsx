@@ -355,7 +355,7 @@ export const ScrollHeroSection: React.FC<ScrollHeroSectionProps> = ({
         </motion.div>
 
         {/* STAGE 4: FINAL CTA & LOOKBOOK CARD (76% - 100%) */}
-        <motion.div
+        {/* <motion.div
           style={{ opacity: stage4Opacity, scale: stage4Scale }}
           className="absolute inset-0 z-20 flex items-center justify-center p-6 pointer-events-none"
         >
@@ -375,7 +375,7 @@ export const ScrollHeroSection: React.FC<ScrollHeroSectionProps> = ({
               <span>FLYKNIT EDITION</span>
             </button>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* BOTTOM PROGRESS TRACK BAR */}
         <div className="absolute bottom-4 left-6 right-6 z-30 max-w-7xl mx-auto flex items-center gap-4 pointer-events-none">

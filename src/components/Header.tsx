@@ -28,27 +28,29 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-neutral-100 transition-all duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 relative flex items-center justify-between gap-4">
         
         {/* Left Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => onSelectCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === cat
-                  ? 'bg-neutral-100 text-neutral-900 font-semibold'
-                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </nav>
+        <div className="flex-1 flex items-center justify-start">
+          <nav className="hidden md:flex items-center space-x-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => onSelectCategory(cat)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === cat
+                    ? 'bg-neutral-100 text-neutral-900 font-semibold'
+                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </nav>
+        </div>
 
-        {/* Center Brand Logo */}
-        <div className="flex items-center">
+        {/* Center Brand Logo (Precisely Centered) */}
+        <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-auto">
           <button 
             onClick={() => onSelectCategory('All')}
             className="group flex items-center focus:outline-none"
@@ -62,15 +64,15 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Right Search & Action Icons */}
-        <div className="flex items-center gap-3">
+        <div className="flex-1 flex items-center justify-end gap-3">
           
           {/* Expanded Search Pill */}
           <div 
             onClick={onOpenSearch}
-            className="hidden sm:flex items-center gap-2.5 bg-neutral-100 hover:bg-neutral-200/80 px-4 py-2.5 rounded-full cursor-pointer transition-all text-neutral-500 text-sm w-64 md:w-80 lg:w-96 border border-neutral-200/60 shadow-inner"
+            className="hidden sm:flex items-center gap-2.5 bg-neutral-100 hover:bg-neutral-200/80 px-4 py-2.5 rounded-full cursor-pointer transition-all text-neutral-500 text-sm w-44 md:w-60 lg:w-72 border border-neutral-200/60 shadow-inner"
           >
             <Search className="w-4 h-4 text-neutral-400 shrink-0" />
-            <span className="select-none text-neutral-400 font-medium">Search shoes, apparel...</span>
+            <span className="select-none text-neutral-400 font-medium truncate">Search shoes, apparel...</span>
           </div>
 
           <button

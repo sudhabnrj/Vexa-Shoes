@@ -32,7 +32,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-      <div 
+      <div
         className="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative border border-neutral-100 flex flex-col md:flex-row max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
@@ -49,7 +49,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-64 object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-300"
+            className="w-full object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-300"
             referrerPolicy="no-referrer"
           />
           <span className="absolute bottom-4 left-4 text-xs font-mono font-bold bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-neutral-800">
@@ -60,9 +60,9 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         {/* Details Side */}
         <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6">
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex items-start flex-col justify-start">
               <span className="text-xs font-extrabold uppercase tracking-widest text-neutral-400">
-                IKA4 FOOTWEAR
+                Vexa FOOTWEAR
               </span>
               <div className="flex items-center text-yellow-400 text-xs font-bold gap-1">
                 <Star className="w-4 h-4 fill-current" />
@@ -92,11 +92,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`py-2 rounded-xl text-xs font-bold border transition-all ${
-                      selectedSize === size
-                        ? 'bg-neutral-950 text-white border-neutral-950'
-                        : 'bg-neutral-50 text-neutral-800 border-neutral-200 hover:border-neutral-400'
-                    }`}
+                    className={`py-2 rounded-xl text-xs font-bold border transition-all ${selectedSize === size
+                      ? 'bg-neutral-950 text-white border-neutral-950'
+                      : 'bg-neutral-50 text-neutral-800 border-neutral-200 hover:border-neutral-400'
+                      }`}
                   >
                     {size}
                   </button>
@@ -131,11 +130,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           <div className="flex items-center gap-3 pt-2">
             <button
               onClick={handleAdd}
-              className={`flex-1 py-3.5 px-6 rounded-full font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md ${
-                added
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-neutral-950 hover:bg-neutral-800 text-white'
-              }`}
+              className={`flex-1 py-3.5 px-6 rounded-full font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md ${added
+                ? 'bg-emerald-600 text-white'
+                : 'bg-neutral-950 hover:bg-neutral-800 text-white'
+                }`}
             >
               {added ? (
                 <>
@@ -152,11 +150,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
             <button
               onClick={() => onToggleWishlist(product)}
-              className={`p-3.5 rounded-full border transition-colors ${
-                isWishlisted
-                  ? 'bg-red-500 border-red-500 text-white'
-                  : 'border-neutral-200 text-neutral-700 hover:bg-neutral-100'
-              }`}
+              className={`p-3.5 rounded-full border transition-colors ${isWishlisted
+                ? 'bg-red-500 border-red-500 text-white'
+                : 'border-neutral-200 text-neutral-700 hover:bg-neutral-100'
+                }`}
               title="Toggle Wishlist"
             >
               <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-current' : ''}`} />

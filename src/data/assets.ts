@@ -18,6 +18,7 @@ import p7 from '../../assets/product/p7.png';
 import p8 from '../../assets/product/p8.png';
 import p9 from '../../assets/product/p9.png';
 import p10 from '../../assets/product/p10.png';
+import p51 from '../../assets/product/p5-1.png';
 
 export const ASSETS = {
   heroOrange,
@@ -38,6 +39,7 @@ export const ASSETS = {
   p8,
   p9,
   p10,
+  p51,
 };
 
 
