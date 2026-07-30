@@ -6,6 +6,13 @@ import modelMaleStreetwear from '../assets/images/model_male_streetwear_17853210
 import modelFemaleOlive from '../assets/images/model_female_olive_1785321111461.jpg';
 import promoGiantShoe from '../assets/images/promo_giant_shoe_1785321122876.jpg';
 
+import p1 from '../../assets/product/p1.png';
+import p2 from '../../assets/product/p2.png';
+import p3 from '../../assets/product/p3.png';
+import p4 from '../../assets/product/p4.png';
+import p5 from '../../assets/product/p5.png';
+import p6 from '../../assets/product/p6.png';
+
 export const ASSETS = {
   heroOrange,
   heroFlyknit,
@@ -14,4 +21,11 @@ export const ASSETS = {
   modelMaleStreetwear,
   modelFemaleOlive,
   promoGiantShoe,
+  p1,
+  p2,
+  p3,
+  p4,
+  p5,
+  p6,
 };
+

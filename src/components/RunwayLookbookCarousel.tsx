@@ -13,17 +13,18 @@ export interface RunwayLook {
   products: Product[];
 }
 
-// 5 Curated Runway Looks matching the exact video reference
+// 6 Curated Runway Looks using product images p1 through p6
 const RUNWAY_LOOKS: RunwayLook[] = [
   {
     id: 'look-1',
-    lookNumber: '5',
-    title: 'SPRING SUMMER 2026',
-    subtitle: 'Picture-perfect and fashionably on the dot. High-shine micro-sequin trousers paired with classic tweed cropped jacket and IKA4 Vexa accents.',
-    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
+    lookNumber: '1',
+    title: 'TERRA HIKING',
+    subtitle: 'All-terrain hiking boot engineered for ultimate grip, durability and ankle stability.',
+    modelImage: ASSETS.p1,
     products: [
+      PRODUCTS_GRID_1[0],
       {
-        id: 'rl-1',
+        id: 'rl-1b',
         name: 'CROPPED FEATHERED TWEED JACKET',
         category: 'Formal',
         price: 2900,
@@ -32,40 +33,19 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=800&auto=format&fit=crop',
         colorway: 'Rose Blush / Tweed',
         description: 'Structured wool tweed cropped jacket with handcrafted feather cuffs.'
-      },
-      {
-        id: 'rl-2',
-        name: 'MICRO SEQUIN DRESS PANTS',
-        category: 'Formal',
-        price: 895,
-        rating: 5,
-        sizes: 'XS - XL',
-        image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800&auto=format&fit=crop',
-        colorway: 'Metallic Rose Gold',
-        description: 'Fluid micro-sequin tailored trousers with silk lining.'
       }
     ]
   },
   {
     id: 'look-2',
-    lookNumber: '6',
-    title: 'OVERSIZED TRENCH & SLINGBACK',
-    subtitle: 'Classic double-breasted cotton trench coat paired with kitten heel slingbacks and IKA4 Vexa stride geometry.',
-    modelImage: ASSETS.modelMaleStreetwear,
+    lookNumber: '2',
+    title: 'AURA CLASSIC',
+    subtitle: 'Timeless low-top minimal design crafted with premium full-grain Italian leather.',
+    modelImage: ASSETS.p2,
     products: [
+      PRODUCTS_GRID_1[1],
       {
-        id: 'rl-3',
-        name: 'KITTEN HEEL SLINGBACK PUMP',
-        category: 'Sneakers',
-        price: 780,
-        rating: 5,
-        sizes: 'US 6 - 11',
-        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop',
-        colorway: 'Patent Ivory',
-        description: 'Sleek pointed slingback heel with contrast bow accent.'
-      },
-      {
-        id: 'rl-4',
+        id: 'rl-2b',
         name: 'OVERSIZED COTTON TRENCH COAT',
         category: 'Lifestyle',
         price: 1950,
@@ -79,13 +59,14 @@ const RUNWAY_LOOKS: RunwayLook[] = [
   },
   {
     id: 'look-3',
-    lookNumber: '7',
-    title: 'ICE BLUE SILK TUNIC',
-    subtitle: 'Asymmetric ruffled silk tunic paired with fitted metallic heels and minimalist silver accessories.',
-    modelImage: ASSETS.modelFemaleOlive,
+    lookNumber: '3',
+    title: 'DOMINA TITAN',
+    subtitle: 'Chunky tactical sole with reinforced toe cap and micro-gel impact absorption.',
+    modelImage: ASSETS.p3,
     products: [
+      PRODUCTS_GRID_1[2],
       {
-        id: 'rl-5',
+        id: 'rl-3b',
         name: 'FORMAL MINT SILK SWEATER',
         category: 'Lifestyle',
         price: 795,
@@ -94,40 +75,19 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
         colorway: 'Sky Mint',
         description: 'Form-fitting draped silk tunic with statement bow tie waist.'
-      },
-      {
-        id: 'rl-6',
-        name: 'FITTED SILVER MIRROR PUMP',
-        category: 'Formal',
-        price: 850,
-        rating: 5,
-        sizes: 'US 5 - 10',
-        image: 'https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?q=80&w=800&auto=format&fit=crop',
-        colorway: 'Chrome Silver',
-        description: 'High-shine mirrored leather pump with subtle red sole detailing.'
       }
     ]
   },
   {
     id: 'look-4',
-    lookNumber: '9',
-    title: 'COUTURE BLACK BUSTIER',
-    subtitle: 'Voluminous ruffle bustier top paired with belted denim trousers and IKA4 Vexa classic soles.',
-    modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop',
+    lookNumber: '4',
+    title: 'AURA NOVA',
+    subtitle: 'Ultralight performance road runner featuring energy return nitrogen-infused foam.',
+    modelImage: ASSETS.p4,
     products: [
+      PRODUCTS_GRID_1[3],
       {
-        id: 'rl-7',
-        name: 'RUFFLES BUSTIER TOP',
-        category: 'Lifestyle',
-        price: 950,
-        rating: 5,
-        sizes: 'XS - L',
-        image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=800&auto=format&fit=crop',
-        colorway: 'Jet Black',
-        description: 'Sculptural architectural shoulder ruffles with boned internal bustier.'
-      },
-      {
-        id: 'rl-8',
+        id: 'rl-4b',
         name: 'BELTED VEGAN TROUSER',
         category: 'Formal',
         price: 895,
@@ -141,24 +101,14 @@ const RUNWAY_LOOKS: RunwayLook[] = [
   },
   {
     id: 'look-5',
-    lookNumber: '12',
-    title: 'IKA4 VEXA KINETIC SUIT',
-    subtitle: 'Ultralight performance blazer paired with Vexa 360° nitrogen foam sneakers.',
-    modelImage: ASSETS.modelWhiteSuit,
+    lookNumber: '5',
+    title: 'AURA ECHO 01',
+    subtitle: 'Multi-textured layered upper with futuristic speed lacing and translucent heel clip.',
+    modelImage: ASSETS.p5,
     products: [
+      PRODUCTS_GRID_1[4],
       {
-        id: 'rl-9',
-        name: 'IKA4 VEXA NITRO RUNNER',
-        category: 'Running',
-        price: 320,
-        rating: 5,
-        sizes: 'US 7 - 13',
-        image: PRODUCTS_GRID_1[1].image,
-        colorway: 'White / Neon Amber',
-        description: 'Nitrogen-infused foam midsole with carbon strike plate for maximum energy return.'
-      },
-      {
-        id: 'rl-10',
+        id: 'rl-5b',
         name: 'AERO-WEAVE KINETIC BLAZER',
         category: 'Lifestyle',
         price: 1850,
@@ -167,6 +117,27 @@ const RUNWAY_LOOKS: RunwayLook[] = [
         image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop',
         colorway: 'Charcoal Matte',
         description: 'Breathable 4-way stretch tailored blazer engineered for unrestricted motion.'
+      }
+    ]
+  },
+  {
+    id: 'look-6',
+    lookNumber: '6',
+    title: 'HERITAGE 74',
+    subtitle: 'Vintage-inspired court shoe rendered in butter-soft pigskin suede and gum sole.',
+    modelImage: ASSETS.p6,
+    products: [
+      PRODUCTS_GRID_1[5],
+      {
+        id: 'rl-6b',
+        name: 'KITTEN HEEL SLINGBACK PUMP',
+        category: 'Sneakers',
+        price: 780,
+        rating: 5,
+        sizes: 'US 6 - 11',
+        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop',
+        colorway: 'Patent Ivory',
+        description: 'Sleek pointed slingback heel with contrast bow accent.'
       }
     ]
   }
@@ -195,58 +166,40 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
     setActiveIndex((prev) => (prev - 1 + RUNWAY_LOOKS.length) % RUNWAY_LOOKS.length);
   };
 
-  // GPU Hardware-accelerated perspective slot parameters
-  // Slot 4: Active / Foreground Right (Anchored to right edge, no blank gap)
-  // Slot 3, 2, 1, 0: Evenly distributed across stage width from left (2%) to right (77%)
+  // GPU Hardware-accelerated 3D perspective slot parameters
+  // Slot 5: Active / Foreground Right (Facing forward, full scale, front layer)
+  // Slots 0-4: Lined up diagonally receding into 3D space toward back-left
   const slotConfig = [
-    // Slot 0 (Deepest Left)
-    { x: '2%', height: '220px', width: '120px', scale: 0.70, opacity: 0.45, zIndex: 1 },
-    // Slot 1 (Far Left)
-    { x: '20%', height: '270px', width: '140px', scale: 0.78, opacity: 0.65, zIndex: 2 },
-    // Slot 2 (Center Left)
-    { x: '39%', height: '330px', width: '165px', scale: 0.86, opacity: 0.80, zIndex: 3 },
-    // Slot 3 (Mid Right)
-    { x: '58%', height: '400px', width: '190px', scale: 0.94, opacity: 0.92, zIndex: 4 },
-    // Slot 4 (ACTIVE FOREGROUND RIGHT - TALLEST & Sharpest)
-    { x: '77%', height: '490px', width: '225px', scale: 1.0, opacity: 1.0, zIndex: 10 },
+    // Slot 0 (Deepest Back-Left)
+    { left: '0%', rotateY: 35, z: -240, height: '240px', width: '140px', scale: 0.68, opacity: 0.45, zIndex: 1 },
+    // Slot 1 (Far Back-Left)
+    { left: '11%', rotateY: 28, z: -180, height: '270px', width: '160px', scale: 0.75, opacity: 0.60, zIndex: 2 },
+    // Slot 2 (Mid Back-Left)
+    { left: '23%', rotateY: 21, z: -120, height: '300px', width: '180px', scale: 0.82, opacity: 0.74, zIndex: 3 },
+    // Slot 3 (Center Stage)
+    { left: '36%', rotateY: 14, z: -60, height: '330px', width: '200px', scale: 0.88, opacity: 0.86, zIndex: 4 },
+    // Slot 4 (Mid Right Foreground)
+    { left: '49%', rotateY: 7, z: 0, height: '365px', width: '220px', scale: 0.94, opacity: 0.94, zIndex: 5 },
+    // Slot 5 (ACTIVE FOREGROUND RIGHT - TALLEST, Sharpest, 0 deg)
+    { left: '62%', rotateY: 0, z: 50, height: '400px', width: '240px', scale: 1.0, opacity: 1.0, zIndex: 10 },
   ];
 
   const getSlotForIndex = (idx: number) => {
     const total = RUNWAY_LOOKS.length;
     const diff = (idx - activeIndex + total) % total;
-    const slotMap = [4, 0, 1, 2, 3];
+    const slotMap = [5, 0, 1, 2, 3, 4];
     return slotMap[diff];
   };
 
   return (
     <section className="bg-[#e9eff4] text-neutral-900 overflow-hidden select-none border-t border-b border-neutral-300/60 font-sans">
-      
-      {/* TOP LUXURY NAVBAR */}
-      <div className="bg-white border-b border-neutral-200/80 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] text-neutral-400 uppercase">
-            <span className="text-neutral-900 font-extrabold border-b-2 border-neutral-900 pb-0.5">RUNWAY</span>
-            <span className="hover:text-neutral-900 cursor-pointer">THE IKA4 COLLECTION</span>
-            <span className="hover:text-neutral-900 cursor-pointer">BOOKMARC</span>
-          </div>
-
-          <div className="hidden lg:flex items-center gap-8 text-[10px] font-bold tracking-[0.18em] text-neutral-400 uppercase">
-            <span className="hover:text-neutral-900 cursor-pointer">COLLECTIONS</span>
-            <span className="hover:text-neutral-900 cursor-pointer">CLOTHING</span>
-            <span className="hover:text-neutral-900 cursor-pointer">LOOKBOOK</span>
-            <span className="hover:text-neutral-900 cursor-pointer">BEAUTY</span>
-            <span className="hover:text-neutral-900 cursor-pointer">ACCESSORIES</span>
-            <span className="hover:text-neutral-900 cursor-pointer">BE IKA4</span>
-          </div>
-        </div>
-      </div>
 
       {/* MAIN CONTENT STAGE CONTAINER */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 min-h-[620px]">
-        
+
         {/* LEFT 8 COLS: TITLE + TRIANGLE PERSPECTIVE STAGE + LOOK FOOTER */}
         <div className="lg:col-span-8 p-6 md:p-10 flex flex-col justify-between relative">
-          
+
           {/* Top Left Title & Subtitle */}
           <div className="max-w-xs sm:max-w-sm z-20">
             <AnimatePresence mode="wait">
@@ -268,11 +221,14 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
           </div>
 
           {/* CENTER TRIANGLE PERSPECTIVE MODEL LINEUP (SILKY SMOOTH GPU TRANSFORM) */}
-          <div className="relative w-full h-[460px] md:h-[500px] flex items-end my-4 overflow-hidden">
+          <div
+            className="relative w-full h-[440px] md:h-[480px] flex items-end my-2 overflow-visible"
+            style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}
+          >
             {RUNWAY_LOOKS.map((look, idx) => {
               const slot = getSlotForIndex(idx);
               const cfg = slotConfig[slot];
-              const isActive = slot === 4;
+              const isActive = slot === 5;
 
               return (
                 <motion.div
@@ -280,7 +236,9 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
                   onClick={() => setActiveIndex(idx)}
                   initial={false}
                   animate={{
-                    x: cfg.x,
+                    left: cfg.left,
+                    rotateY: cfg.rotateY,
+                    z: cfg.z,
                     height: cfg.height,
                     width: cfg.width,
                     scale: cfg.scale,
@@ -289,24 +247,36 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
                   }}
                   transition={{
                     type: 'spring',
-                    stiffness: 240,
-                    damping: 26,
+                    stiffness: 220,
+                    damping: 24,
                     mass: 0.8,
                   }}
                   style={{
                     position: 'absolute',
-                    bottom: 0,
-                    willChange: 'transform, opacity',
+                    bottom: '16px',
+                    transformStyle: 'preserve-3d',
+                    transformOrigin: 'bottom center',
+                    willChange: 'transform, opacity, left',
                   }}
-                  className={`cursor-pointer flex flex-col items-center justify-end origin-bottom transition-opacity ${
-                    isActive ? 'drop-shadow-2xl' : 'hover:opacity-85'
+                  className={`cursor-pointer group flex flex-col items-center justify-between rounded-3xl p-3 sm:p-4 transition-all duration-300 ${
+                    isActive
+                      ? 'bg-gradient-to-b from-white/95 to-white/80 backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] border border-white/90 ring-1 ring-black/5'
+                      : 'bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md shadow-lg border border-white/50 hover:bg-white/80'
                   }`}
                 >
-                  <img
-                    src={look.modelImage}
-                    alt={look.title}
-                    className="w-full h-full object-cover object-top rounded-t-lg pointer-events-none"
-                  />
+                  <div className="relative w-full flex-1 flex items-center justify-center min-h-0">
+                    <div className={`absolute bottom-1 w-4/5 h-3 rounded-full blur-md transition-opacity ${isActive ? 'bg-black/25 opacity-100' : 'bg-black/15 opacity-60'}`} />
+                    <img
+                      src={look.modelImage}
+                      alt={look.title}
+                      className="max-w-full max-h-full object-contain object-center pointer-events-none drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="mt-2 text-center select-none">
+                    <span className={`text-[10px] font-extrabold uppercase tracking-widest block truncate ${isActive ? 'text-neutral-950' : 'text-neutral-500'}`}>
+                      {look.title}
+                    </span>
+                  </div>
                 </motion.div>
               );
             })}
@@ -350,9 +320,8 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
                 <button
                   key={i}
                   onClick={() => setActiveIndex(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === activeIndex ? 'w-6 bg-neutral-950' : 'w-1.5 bg-neutral-400 hover:bg-neutral-600'
-                  }`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIndex ? 'w-6 bg-neutral-950' : 'w-1.5 bg-neutral-400 hover:bg-neutral-600'
+                    }`}
                   aria-label={`Go to look ${i + 1}`}
                 />
               ))}
@@ -363,7 +332,7 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
 
         {/* RIGHT 4 COLS: SILKY SMOOTH CROSS-FADE PRODUCT PANEL */}
         <div className="lg:col-span-4 bg-white border-l border-neutral-200/80 p-6 md:p-8 flex flex-col justify-between">
-          
+
           <AnimatePresence mode="wait">
             <motion.div
               key={activeLook.id}
@@ -378,7 +347,7 @@ export const RunwayLookbookCarousel: React.FC<RunwayLookbookCarouselProps> = ({
 
                 return (
                   <div key={prod.id} className="relative flex flex-col justify-between group">
-                    
+
                     {/* Top Left Heart Wishlist Toggle */}
                     <div className="flex justify-between items-center mb-2">
                       <button

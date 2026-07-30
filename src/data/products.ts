@@ -1,3 +1,5 @@
+import { ASSETS } from './assets';
+
 export interface Product {
   id: string;
   name: string;
@@ -19,7 +21,7 @@ export const PRODUCTS_GRID_1: Product[] = [
     price: 350,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p1,
     colorway: 'Earth Brown',
     description: 'All-terrain hiking boot engineered for ultimate grip, durability and ankle stability.'
   },
@@ -30,7 +32,7 @@ export const PRODUCTS_GRID_1: Product[] = [
     price: 200,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p2,
     colorway: 'Monochrome White',
     description: 'Timeless low-top minimal design crafted with premium full-grain Italian leather.'
   },
@@ -41,7 +43,7 @@ export const PRODUCTS_GRID_1: Product[] = [
     price: 300,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p3,
     colorway: 'Stealth Black',
     description: 'Chunky tactical sole with reinforced toe cap and micro-gel impact absorption.'
   },
@@ -52,7 +54,7 @@ export const PRODUCTS_GRID_1: Product[] = [
     price: 150,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p4,
     colorway: 'Slate Gray / Neon',
     description: 'Ultralight performance road runner featuring energy return nitrogen-infused foam.'
   },
@@ -63,7 +65,7 @@ export const PRODUCTS_GRID_1: Product[] = [
     price: 200,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p5,
     colorway: 'Pure Frost',
     description: 'Multi-textured layered upper with futuristic speed lacing and translucent heel clip.'
   },
@@ -74,7 +76,7 @@ export const PRODUCTS_GRID_1: Product[] = [
     price: 100,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p6,
     colorway: 'Suede Beige',
     description: 'Vintage-inspired court shoe rendered in butter-soft pigskin suede and gum sole.'
   },
