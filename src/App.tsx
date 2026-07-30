@@ -127,6 +127,10 @@ export default function App() {
           onToggleWishlist={(prod) => handleToggleWishlist(prod)}
           wishlistIds={wishlistProducts.map((p) => p.id)}
           onExploreCategory={() => setIsSearchOpen(true)}
+          onAddToCart={(prod) => {
+            handleAddToCart(prod, 'US 9', 1);
+            setIsCartOpen(true);
+          }}
         />
 
         {/* Elevate Your Stride Dual Feature Section */}
