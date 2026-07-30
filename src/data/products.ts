@@ -169,27 +169,32 @@ export const TOP_FEATURED_PRODUCTS = [
 export const LOOKBOOK_IMAGES = [
   {
     id: 'l1',
-    title: 'Urban Streetwear',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop'
+    title: 'TERRA HIKING EDITION',
+    image: ASSETS.p1
   },
   {
     id: 'l2',
-    title: 'Minimal Beige Ensemble',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop'
+    title: 'AURA CLASSIC LEATHER',
+    image: ASSETS.p2
   },
   {
     id: 'l3',
-    title: 'Monochrome Denim & Kicks',
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop'
+    title: 'DOMINA TITAN TACTICAL',
+    image: ASSETS.p3
   },
   {
     id: 'l4',
-    title: 'Athleisure Comfort',
-    image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop'
+    title: 'AURA NOVA NITRO RUNNER',
+    image: ASSETS.p4
   },
   {
     id: 'l5',
-    title: 'Contemporary Layering',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop'
+    title: 'AURA ECHO 01 FROST',
+    image: ASSETS.p5
+  },
+  {
+    id: 'l6',
+    title: 'HERITAGE 74 SUEDE',
+    image: ASSETS.p6
   }
 ];

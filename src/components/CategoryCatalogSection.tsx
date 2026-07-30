@@ -48,7 +48,7 @@ export const CategoryCatalogSection: React.FC<CategoryCatalogSectionProps> = ({
         
         {/* Top Filter Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <h3 className="text-xl sm:text-2xl font-extrabold uppercase tracking-widest text-neutral-900 font-sans">
+          <h3 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 uppercase leading-none font-sans">
             CATEGORY
           </h3>
 
