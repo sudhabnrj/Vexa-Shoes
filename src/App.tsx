@@ -115,7 +115,13 @@ export default function App() {
 
         {/* Every Step Defines You Section */}
         <DefineSection
-          onSelectProduct={(id) => handleSelectFeaturedById(id)}
+          onSelectProduct={(prod) => setSelectedProduct(prod)}
+          onToggleWishlist={(prod) => handleToggleWishlist(prod)}
+          wishlistIds={wishlistProducts.map((p) => p.id)}
+          onAddToCart={(prod) => {
+            handleAddToCart(prod, 'US 9', 1);
+            setIsCartOpen(true);
+          }}
         />
 
         {/* Brand Logos Bar */}
@@ -150,6 +156,10 @@ export default function App() {
           onSelectProduct={(prod) => setSelectedProduct(prod)}
           onToggleWishlist={(prod) => handleToggleWishlist(prod)}
           wishlistIds={wishlistProducts.map((p) => p.id)}
+          onAddToCart={(prod) => {
+            handleAddToCart(prod, 'US 9', 1);
+            setIsCartOpen(true);
+          }}
         />
 
         {/* Promo Banner Section */}

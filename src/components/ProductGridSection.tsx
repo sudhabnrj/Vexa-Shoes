@@ -38,7 +38,7 @@ export const ProductGridSection: React.FC<ProductGridSectionProps> = ({
             <div>
               <button
                 onClick={onExploreCategory}
-                className="group inline-flex items-center gap-3 border border-white/20 hover:border-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all"
+                className="group justify-center flex cursor-pointer w-full items-center gap-3 border border-white/20 hover:border-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all"
               >
                 <span>Explore Now</span>
                 <span className="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center group-hover:border-black transition-colors">
@@ -123,7 +123,7 @@ export const ProductGridSection: React.FC<ProductGridSectionProps> = ({
                         e.stopPropagation();
                         onAddToCart?.(product);
                       }}
-                      className="flex cursor-pointer items-center gap-1.5 bg-neutral-950 hover:bg-neutral-800 active:scale-95 text-white px-3.5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all"
+                      className="flex cursor-pointer items-center gap-1.5 bg-neutral-950 hover:bg-neutral-800 active:scale-95 text-white px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all"
                       title="Add to Cart"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, ShoppingBag, Heart, User, Menu, X } from 'lucide-react';
+import { ASSETS } from '../data/assets';
 
 interface HeaderProps {
   cartCount: number;
@@ -50,14 +51,13 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center">
           <button 
             onClick={() => onSelectCategory('All')}
-            className="group flex items-center gap-1 focus:outline-none"
+            className="group flex items-center focus:outline-none"
           >
-            <span className="text-3xl font-black tracking-tighter text-neutral-950 font-sans">
-              IKA
-            </span>
-            <span className="text-3xl font-black text-neutral-950 inline-block bg-neutral-950 text-white px-2 py-0.5 rounded-md transform -skew-x-6 text-2xl group-hover:scale-105 transition-transform">
-              4
-            </span>
+            <img
+              src={ASSETS.logo}
+              alt="IKA4 Footwear"
+              className="h-8 sm:h-9 md:h-10 object-contain group-hover:scale-105 transition-transform"
+            />
           </button>
         </div>
 

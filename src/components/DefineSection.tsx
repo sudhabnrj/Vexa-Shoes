@@ -1,13 +1,23 @@
 import React from 'react';
+import { Star, Heart, ShoppingBag } from 'lucide-react';
 import { ASSETS } from '../data/assets';
-import { TOP_FEATURED_PRODUCTS } from '../data/products';
-import { ArrowUpRight } from 'lucide-react';
+import { Product, PRODUCTS_GRID_1 } from '../data/products';
 
 interface DefineSectionProps {
-  onSelectProduct: (id: string) => void;
+  onSelectProduct: (product: Product) => void;
+  onToggleWishlist: (product: Product) => void;
+  wishlistIds: string[];
+  onAddToCart?: (product: Product) => void;
 }
 
-export const DefineSection: React.FC<DefineSectionProps> = ({ onSelectProduct }) => {
+export const DefineSection: React.FC<DefineSectionProps> = ({
+  onSelectProduct,
+  onToggleWishlist,
+  wishlistIds,
+  onAddToCart,
+}) => {
+  const featuredPair = [PRODUCTS_GRID_1[0], PRODUCTS_GRID_1[1]];
+
   return (
     <section className="py-12 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,37 +44,95 @@ export const DefineSection: React.FC<DefineSectionProps> = ({ onSelectProduct })
               </h2>
             </div>
 
-            {/* Two Product Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              {TOP_FEATURED_PRODUCTS.map((prod) => (
-                <div
-                  key={prod.id}
-                  onClick={() => onSelectProduct(prod.id)}
-                  className="bg-neutral-100 hover:bg-neutral-150 p-4 rounded-3xl cursor-pointer group transition-all duration-300 flex flex-col justify-between border border-neutral-200/60 shadow-sm hover:shadow-md"
-                >
-                  <div className="w-full h-48 rounded-2xl overflow-hidden flex items-center justify-center p-2 mb-3">
-                    <img
-                      src={prod.image}
-                      alt={prod.name}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between pt-2">
-                    <div>
-                      <h4 className="text-sm font-extrabold text-neutral-950 tracking-wider uppercase">
-                        {prod.name}
-                      </h4>
-                      <p className="text-xs text-neutral-500 font-medium">
-                        {prod.colorway}
-                      </p>
+            {/* Two Product Cards (Matching FIND YOUR PERFECT PAIR Card Layout) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4">
+              {featuredPair.map((product) => {
+                const isWishlisted = wishlistIds.includes(product.id);
+                return (
+                  <div
+                    key={product.id}
+                    onClick={() => onSelectProduct(product)}
+                    className="group relative bg-white hover:bg-neutral-50/80 rounded-3xl p-4 flex flex-col justify-between transition-all duration-300 border border-neutral-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+                  >
+                    {/* Top Bar: Size Tag & Wishlist Button */}
+                    <div className="flex items-center justify-between z-10">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-neutral-100 rounded-full text-neutral-600 border border-neutral-200/60 font-mono">
+                        {product.sizes}
+                      </span>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onToggleWishlist(product);
+                        }}
+                        className={`p-2 rounded-full transition-all shadow-sm ${
+                          isWishlisted
+                            ? 'bg-red-500 text-white shadow-red-200'
+                            : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
+                        }`}
+                        title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                      >
+                        <Heart className={`w-3.5 h-3.5 ${isWishlisted ? 'fill-current' : ''}`} />
+                      </button>
                     </div>
-                    <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center group-hover:bg-neutral-950 group-hover:text-white transition-colors shadow-sm">
-                      <ArrowUpRight className="w-4 h-4" />
-                    </span>
+
+                    {/* Product Image Container */}
+                    <div className="w-full h-52 sm:h-56 rounded-2xl flex items-center justify-center p-1 my-2 bg-neutral-50/70 group-hover:bg-neutral-100/80 transition-colors relative overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-md"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+
+                    {/* Product Details Section */}
+                    <div className="space-y-2 pt-1">
+                      {/* Rating Stars & Score */}
+                      <div className="flex items-center gap-1.5">
+                        <div className="flex items-center text-amber-400">
+                          {[...Array(product.rating || 5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 fill-current" />
+                          ))}
+                        </div>
+                        <span className="text-[11px] font-bold text-neutral-500 font-mono">
+                          5.0
+                        </span>
+                      </div>
+
+                      {/* Product Title */}
+                      <h4 className="font-extrabold text-sm uppercase tracking-wider text-neutral-900 truncate group-hover:text-neutral-950">
+                        {product.name}
+                      </h4>
+
+                      {/* Footer Row: Price & Cart Button */}
+                      <div className="pt-2 flex items-center justify-between border-t border-neutral-100">
+                        <div>
+                          <span className="text-xs text-neutral-400 block font-normal text-[10px] uppercase tracking-wider">
+                            Price
+                          </span>
+                          <span className="text-base font-black text-neutral-950 font-sans">
+                            ${product.price}
+                          </span>
+                        </div>
+
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onAddToCart?.(product);
+                          }}
+                          className="flex cursor-pointer items-center gap-1.5 bg-neutral-950 hover:bg-neutral-800 active:scale-95 text-white px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all"
+                          title="Add to Cart"
+                        >
+                          <ShoppingBag className="w-3.5 h-3.5" />
+                          <span>Add To Cart</span>
+                        </button>
+                      </div>
+                    </div>
+
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
           </div>

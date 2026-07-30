@@ -6,6 +6,8 @@ import modelMaleStreetwear from '../assets/images/model_male_streetwear_17853210
 import modelFemaleOlive from '../assets/images/model_female_olive_1785321111461.jpg';
 import promoGiantShoe from '../assets/images/promo_giant_shoe_1785321122876.jpg';
 
+import logo from '../../assets/logo.png';
+
 import p1 from '../../assets/product/p1.png';
 import p2 from '../../assets/product/p2.png';
 import p3 from '../../assets/product/p3.png';
@@ -21,6 +23,7 @@ export const ASSETS = {
   modelMaleStreetwear,
   modelFemaleOlive,
   promoGiantShoe,
+  logo,
   p1,
   p2,
   p3,
@@ -28,4 +31,5 @@ export const ASSETS = {
   p5,
   p6,
 };
+
 

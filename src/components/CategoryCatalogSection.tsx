@@ -1,34 +1,45 @@
 import React, { useState } from 'react';
-import { Star, Heart, ChevronRight } from 'lucide-react';
-import { Product, PRODUCTS_CATEGORY_SECTION } from '../data/products';
+import { Star, Heart, ChevronRight, ShoppingBag } from 'lucide-react';
+import { Product, PRODUCTS_GRID_1, PRODUCTS_CATEGORY_SECTION } from '../data/products';
 
 interface CategoryCatalogSectionProps {
   onSelectProduct: (product: Product) => void;
   onToggleWishlist: (product: Product) => void;
   wishlistIds: string[];
+  onAddToCart?: (product: Product) => void;
 }
 
 export const CategoryCatalogSection: React.FC<CategoryCatalogSectionProps> = ({
   onSelectProduct,
   onToggleWishlist,
   wishlistIds,
+  onAddToCart,
 }) => {
-  const [selectedFilter, setSelectedFilter] = useState<string>('Running');
+  const [selectedFilter, setSelectedFilter] = useState<string>('All');
   const [startIndex, setStartIndex] = useState<number>(0);
 
-  const filters = ['Running', 'Basketball', 'Sneakers', 'Gym', 'Hiking', 'Formal'];
+  const filters = ['All', 'Running', 'Basketball', 'Sneakers', 'Gym', 'Hiking', 'Formal'];
 
-  const filteredProducts = PRODUCTS_CATEGORY_SECTION.filter(
-    (p) => selectedFilter === 'All' || p.category === selectedFilter || true
-  );
+  const allProducts = [...PRODUCTS_GRID_1, ...PRODUCTS_CATEGORY_SECTION];
+
+  const filteredProducts = selectedFilter === 'All'
+    ? allProducts
+    : allProducts.filter((p) => p.category === selectedFilter);
+
+  const productsToDisplay = filteredProducts.length > 0 ? filteredProducts : allProducts;
+
+  const handleFilterSelect = (filter: string) => {
+    setSelectedFilter(filter);
+    setStartIndex(0);
+  };
 
   const handleNext = () => {
-    setStartIndex((prev) => (prev + 1) % PRODUCTS_CATEGORY_SECTION.length);
+    setStartIndex((prev) => (prev + 1) % productsToDisplay.length);
   };
 
   const visibleProducts = [
-    ...PRODUCTS_CATEGORY_SECTION.slice(startIndex),
-    ...PRODUCTS_CATEGORY_SECTION.slice(0, startIndex),
+    ...productsToDisplay.slice(startIndex % productsToDisplay.length),
+    ...productsToDisplay.slice(0, startIndex % productsToDisplay.length),
   ].slice(0, 4);
 
   return (
@@ -45,8 +56,8 @@ export const CategoryCatalogSection: React.FC<CategoryCatalogSectionProps> = ({
             {filters.map((filter) => (
               <button
                 key={filter}
-                onClick={() => setSelectedFilter(filter)}
-                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+                onClick={() => handleFilterSelect(filter)}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                   selectedFilter === filter
                     ? 'bg-neutral-900 text-white shadow-sm'
                     : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-700'
@@ -60,31 +71,39 @@ export const CategoryCatalogSection: React.FC<CategoryCatalogSectionProps> = ({
 
         {/* Product Cards Row with Floating Right Chevron Button */}
         <div className="relative">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {visibleProducts.map((product) => {
               const isWishlisted = wishlistIds.includes(product.id);
               return (
                 <div
                   key={product.id}
-                  className="group relative bg-neutral-100 hover:bg-neutral-150 rounded-3xl p-3 flex flex-col justify-between transition-all duration-300 border border-neutral-200/60 shadow-sm hover:shadow-md cursor-pointer"
                   onClick={() => onSelectProduct(product)}
+                  className="group relative bg-white hover:bg-neutral-50/80 rounded-3xl p-4 flex flex-col justify-between transition-all duration-300 border border-neutral-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 cursor-pointer"
                 >
-                  {/* Wishlist Button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onToggleWishlist(product);
-                    }}
-                    className={`absolute top-4 right-4 z-10 p-2 rounded-full backdrop-blur-md transition-colors ${
-                      isWishlisted ? 'bg-red-500 text-white' : 'bg-white/80 hover:bg-white text-neutral-700'
-                    }`}
-                    title="Toggle Wishlist"
-                  >
-                    <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-current' : ''}`} />
-                  </button>
+                  {/* Top Bar: Size Tag & Wishlist Button */}
+                  <div className="flex items-center justify-between z-10">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-neutral-100 rounded-full text-neutral-600 border border-neutral-200/60 font-mono">
+                      {product.sizes}
+                    </span>
 
-                  {/* Product Image */}
-                  <div className="w-full h-56 sm:h-64 rounded-2xl overflow-hidden flex items-center justify-center p-1 mb-3 bg-white/40">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onToggleWishlist(product);
+                      }}
+                      className={`p-2 rounded-full transition-all shadow-sm ${
+                        isWishlisted
+                          ? 'bg-red-500 text-white shadow-red-200'
+                          : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
+                      }`}
+                      title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                    >
+                      <Heart className={`w-3.5 h-3.5 ${isWishlisted ? 'fill-current' : ''}`} />
+                    </button>
+                  </div>
+
+                  {/* Product Image Container */}
+                  <div className="w-full h-56 sm:h-64 rounded-2xl flex items-center justify-center p-1 my-2 bg-neutral-50/70 group-hover:bg-neutral-100/80 transition-colors relative overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -93,31 +112,48 @@ export const CategoryCatalogSection: React.FC<CategoryCatalogSectionProps> = ({
                     />
                   </div>
 
-                  {/* Black Bottom Banner Bar */}
-                  <div className="bg-neutral-950 text-white p-3 sm:p-3.5 rounded-2xl flex items-center justify-between text-xs font-medium">
-                    
-                    {/* Left Name & Size */}
-                    <div className="space-y-0.5">
-                      <h4 className="font-extrabold tracking-wider uppercase text-xs text-white">
-                        {product.name}
-                      </h4>
-                      <p className="text-[10px] text-neutral-400 font-mono">
-                        {product.sizes}
-                      </p>
-                    </div>
-
-                    {/* Right Stars & Price */}
-                    <div className="flex flex-col items-end space-y-0.5">
-                      <div className="flex items-center text-yellow-400">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-2.5 h-2.5 fill-current" />
+                  {/* Product Details Section */}
+                  <div className="space-y-2 pt-1">
+                    {/* Rating Stars & Score */}
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex items-center text-amber-400">
+                        {[...Array(product.rating || 5)].map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-current" />
                         ))}
                       </div>
-                      <span className="font-bold text-xs sm:text-sm text-white">
-                        ${product.price}
+                      <span className="text-[11px] font-bold text-neutral-500 font-mono">
+                        5.0
                       </span>
                     </div>
 
+                    {/* Product Title */}
+                    <h4 className="font-extrabold text-sm uppercase tracking-wider text-neutral-900 truncate group-hover:text-neutral-950">
+                      {product.name}
+                    </h4>
+
+                    {/* Footer Row: Price & Cart Button */}
+                    <div className="pt-2 flex items-center justify-between border-t border-neutral-100">
+                      <div>
+                        <span className="text-xs text-neutral-400 block font-normal text-[10px] uppercase tracking-wider">
+                          Price
+                        </span>
+                        <span className="text-base font-black text-neutral-950 font-sans">
+                          ${product.price}
+                        </span>
+                      </div>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onAddToCart?.(product);
+                        }}
+                        className="flex cursor-pointer items-center gap-1.5 bg-neutral-950 hover:bg-neutral-800 active:scale-95 text-white px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all"
+                        title="Add to Cart"
+                      >
+                        <ShoppingBag className="w-3.5 h-3.5" />
+                        <span>Add To Cart</span>
+                      </button>
+                    </div>
                   </div>
 
                 </div>
