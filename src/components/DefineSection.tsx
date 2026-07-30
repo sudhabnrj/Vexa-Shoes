@@ -16,7 +16,31 @@ export const DefineSection: React.FC<DefineSectionProps> = ({
   wishlistIds,
   onAddToCart,
 }) => {
-  const featuredPair = [PRODUCTS_GRID_1[0], PRODUCTS_GRID_1[1]];
+  const p9Product = PRODUCTS_GRID_1.find((p) => p.id === 'p9') || {
+    id: 'p9',
+    name: 'VEXA SPEED',
+    category: 'Sneakers' as const,
+    price: 290,
+    rating: 5,
+    sizes: 'XS - XXXL',
+    image: ASSETS.p9,
+    colorway: 'Futuristic Stealth Gray',
+    description: 'Aerodynamic running silhouette engineered for maximum energy return and speed.'
+  };
+
+  const p10Product = PRODUCTS_GRID_1.find((p) => p.id === 'p10') || {
+    id: 'p10',
+    name: 'AURA APEX',
+    category: 'Running' as const,
+    price: 310,
+    rating: 5,
+    sizes: 'XS - XXXL',
+    image: ASSETS.p10,
+    colorway: 'Hyper Red / Crimson Black',
+    description: 'High-propulsion road runner featuring responsive 3D aero-weave geometry.'
+  };
+
+  const featuredPair = [p9Product, p10Product];
 
   return (
     <section className="py-12 lg:py-20 bg-white">

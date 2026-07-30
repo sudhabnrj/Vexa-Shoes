@@ -87,9 +87,42 @@ export const PRODUCTS_GRID_1: Product[] = [
     price: 350,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p7,
     colorway: 'Gold Edition White',
     description: 'Luxury Parisian court silhouette featuring metallic foil gold embossing and wax laces.'
+  },
+  {
+    id: 'p8',
+    name: 'AURA PHANTOM',
+    category: 'Sneakers',
+    price: 320,
+    rating: 5,
+    sizes: 'XS - XXXL',
+    image: ASSETS.p8,
+    colorway: 'Obsidian Black',
+    description: 'Next-gen stealth lifestyle sneaker with dynamic kinetic responsiveness.'
+  },
+  {
+    id: 'p9',
+    name: 'VEXA SPEED',
+    category: 'Sneakers',
+    price: 290,
+    rating: 5,
+    sizes: 'XS - XXXL',
+    image: ASSETS.p9,
+    colorway: 'Futuristic Stealth Gray',
+    description: 'Aerodynamic running silhouette engineered for maximum energy return and speed.'
+  },
+  {
+    id: 'p10',
+    name: 'AURA APEX',
+    category: 'Running',
+    price: 310,
+    rating: 5,
+    sizes: 'XS - XXXL',
+    image: ASSETS.p10,
+    colorway: 'Hyper Red / Crimson Black',
+    description: 'High-propulsion road runner featuring responsive 3D aero-weave geometry.'
   }
 ];
 
@@ -101,7 +134,7 @@ export const PRODUCTS_CATEGORY_SECTION: Product[] = [
     price: 350,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1579338559194-a162d19bf842?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p8,
     colorway: 'Volcanic Black / Lime',
     description: 'High-traction hardwood basketball shoe designed for rapid direction changes and explosive vertical hops.'
   },
@@ -112,7 +145,7 @@ export const PRODUCTS_CATEGORY_SECTION: Product[] = [
     price: 300,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p9,
     colorway: 'Moss Green / Ochre',
     description: 'Waterproof trail footwear with Vibram rubber outsole and quick-dry lining.'
   },
@@ -123,7 +156,7 @@ export const PRODUCTS_CATEGORY_SECTION: Product[] = [
     price: 250,
     rating: 5,
     sizes: 'XS - XXXL',
-    image: 'https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?q=80&w=800&auto=format&fit=crop',
+    image: ASSETS.p10,
     colorway: 'Midnight Orange',
     description: 'Carbon fiber plate technology paired with maximum cushion matrix for marathon performance.'
   },
@@ -170,31 +203,31 @@ export const LOOKBOOK_IMAGES = [
   {
     id: 'l1',
     title: 'TERRA HIKING EDITION',
-    image: ASSETS.p1
+    image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=698&auto=format&fit=crop'
   },
   {
     id: 'l2',
     title: 'AURA CLASSIC LEATHER',
-    image: ASSETS.p2
+    image: 'https://plus.unsplash.com/premium_photo-1663100769321-9eb8fe5a8e6b?q=80&w=1172&auto=format&fit=crop'
   },
   {
     id: 'l3',
     title: 'DOMINA TITAN TACTICAL',
-    image: ASSETS.p3
+    image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=764&auto=format&fit=crop'
   },
   {
     id: 'l4',
     title: 'AURA NOVA NITRO RUNNER',
-    image: ASSETS.p4
+    image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=880&auto=format&fit=crop'
   },
   {
     id: 'l5',
     title: 'AURA ECHO 01 FROST',
-    image: ASSETS.p5
+    image: 'https://images.unsplash.com/photo-1562183241-b937e95585b6?q=80&w=765&auto=format&fit=crop'
   },
   {
     id: 'l6',
     title: 'HERITAGE 74 SUEDE',
-    image: ASSETS.p6
+    image: 'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?q=80&w=715&auto=format&fit=crop'
   }
 ];

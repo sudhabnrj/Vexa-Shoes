@@ -17,7 +17,7 @@ export const LookbookSection: React.FC = () => {
   return (
     <section className="py-12 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        
+
         {/* Section Top Heading */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/80 pb-6">
           <div>
@@ -38,15 +38,15 @@ export const LookbookSection: React.FC = () => {
                 key={lb.id}
                 className="group relative rounded-3xl overflow-hidden h-72 sm:h-96 bg-neutral-50 cursor-pointer border border-neutral-200/80 shadow-sm hover:shadow-xl transition-all"
               >
-                <div className="w-full h-full p-4 flex items-center justify-center bg-neutral-50/90 group-hover:bg-neutral-100/90 transition-colors">
+                <div className="w-full h-full flex items-center justify-center bg-neutral-50/90 group-hover:bg-neutral-100/90 transition-colors">
                   <img
                     src={lb.image}
                     alt={lb.title}
-                    className="max-w-full max-h-full object-contain pointer-events-none drop-shadow-xl group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover pointer-events-none drop-shadow-xl group-hover:scale-110 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                
+
                 {/* Instagram Icon Thumbnail Badge */}
                 <div className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center border border-white/30 group-hover:scale-110 group-hover:bg-neutral-950 transition-all shadow-md">
                   <Instagram className="w-4.5 h-4.5" />
