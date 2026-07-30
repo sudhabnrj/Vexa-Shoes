@@ -20,10 +20,10 @@ export const ProductGridSection: React.FC<ProductGridSectionProps> = ({
   return (
     <section className="py-12 lg:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* 8-Tile Grid (2 rows x 4 cols on desktop) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          
+
           {/* Tile 1: Featured Dark Promo Card */}
           <div className="bg-neutral-950 text-white p-6 sm:p-8 rounded-3xl flex flex-col justify-between space-y-6 shadow-md hover:shadow-xl transition-shadow">
             <div className="space-y-3">
@@ -68,11 +68,10 @@ export const ProductGridSection: React.FC<ProductGridSectionProps> = ({
                       e.stopPropagation();
                       onToggleWishlist(product);
                     }}
-                    className={`p-2 rounded-full transition-all shadow-sm ${
-                      isWishlisted
-                        ? 'bg-red-500 text-white shadow-red-200'
-                        : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
-                    }`}
+                    className={`p-2 rounded-full transition-all shadow-sm ${isWishlisted
+                      ? 'bg-red-500 text-white shadow-red-200'
+                      : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
+                      }`}
                     title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
                   >
                     <Heart className={`w-3.5 h-3.5 ${isWishlisted ? 'fill-current' : ''}`} />
@@ -80,11 +79,11 @@ export const ProductGridSection: React.FC<ProductGridSectionProps> = ({
                 </div>
 
                 {/* Product Image Container */}
-                <div className="w-full h-44 sm:h-48 rounded-2xl flex items-center justify-center p-3 my-2 bg-neutral-50/70 group-hover:bg-neutral-100/80 transition-colors relative overflow-hidden">
+                <div className="w-full h-56 sm:h-64 rounded-2xl flex items-center justify-center p-1 my-2 bg-neutral-50/70 group-hover:bg-neutral-100/80 transition-colors relative overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="max-w-full max-h-full object-contain group-hover:scale-108 transition-transform duration-300 drop-shadow-md"
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-md"
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -124,11 +123,11 @@ export const ProductGridSection: React.FC<ProductGridSectionProps> = ({
                         e.stopPropagation();
                         onAddToCart?.(product);
                       }}
-                      className="flex items-center gap-1.5 bg-neutral-950 hover:bg-neutral-800 active:scale-95 text-white px-3.5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all"
+                      className="flex cursor-pointer items-center gap-1.5 bg-neutral-950 hover:bg-neutral-800 active:scale-95 text-white px-3.5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all"
                       title="Add to Cart"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
-                      <span>Cart</span>
+                      <span>Add To Cart</span>
                     </button>
                   </div>
                 </div>

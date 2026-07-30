@@ -84,11 +84,11 @@ export const CategoryCatalogSection: React.FC<CategoryCatalogSectionProps> = ({
                   </button>
 
                   {/* Product Image */}
-                  <div className="w-full h-44 sm:h-48 rounded-2xl overflow-hidden flex items-center justify-center p-2 mb-3 bg-white/40">
+                  <div className="w-full h-56 sm:h-64 rounded-2xl overflow-hidden flex items-center justify-center p-1 mb-3 bg-white/40">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-md"
                       referrerPolicy="no-referrer"
                     />
                   </div>
