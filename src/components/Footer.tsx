@@ -108,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectLink }) => {
 
         {/* Bottom Legal & Copyright Bar */}
         <div className="pt-8 border-t border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 font-medium gap-4">
-          <p>© 2026 IKA4. All rights reserved.</p>
+          <p>© 2026 Vexa Inc. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <button onClick={() => onSelectLink?.('Terms and Service')} className="hover:text-white transition-colors">Terms & Service</button>
             <button onClick={() => onSelectLink?.('Privacy Policy')} className="hover:text-white transition-colors">Privacy Policy</button>
